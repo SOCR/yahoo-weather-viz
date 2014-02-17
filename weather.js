@@ -10,7 +10,7 @@ function insertandcheck_1()
 	}
 	city_1.zipcode = zipcodeValue;
 	getWoeidNumber_1(city_1.zipcode);
-	show_1();
+	
     //getWeather(city.woeid);
 }
 
@@ -56,6 +56,7 @@ function getWeatherData_1(data){
 	getHumidity_1(data);
 	getBarometer_1(data);
 	getWind_1(data);
+       show_1();
 }
 
 function getWoeid_1(data){
@@ -88,10 +89,10 @@ function getBarometer_1(data){
 	pres= data.query.results.channel.atmosphere.rising;
 	switch(pres)
 	{
-		case 1:
+		case "1":
 		city_1.barometer="R";
 		break;
-		case 2:
+		case "2":
 		city_1.barometer="F";
 		break;
 		default:
@@ -175,7 +176,7 @@ function insertandcheck_2()
 	}
 	city_2.zipcode = zipcodeValue;
 	getWoeidNumber_2(city_2.zipcode);
-	show_2();
+	
     //getWeather(city.woeid);
 }
 
@@ -221,6 +222,7 @@ function getWeatherData_2(data){
 	getHumidity_2(data);
 	getBarometer_2(data);
 	getWind_2(data);
+        show_2();
 }
 
 function getWoeid_2(data){
@@ -253,10 +255,10 @@ function getBarometer_2(data){
 	pres= data.query.results.channel.atmosphere.rising;
 	switch(pres)
 	{
-		case 1:
+		case "1":
 		city_2.barometer="R";
 		break;
-		case 2:
+		case "2":
 		city_2.barometer="F";
 		break;
 		default:
@@ -264,7 +266,7 @@ function getBarometer_2(data){
 	}
 }
 
-function getWind_1(data){
+function getWind_2(data){
 	dir= data.query.results.channel.wind.direction;
 	city_2.windSpeed=data.query.results.channel.wind.speed;
 
