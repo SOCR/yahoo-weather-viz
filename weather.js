@@ -10,12 +10,13 @@ function insertandcheck_1()
 	}
 	city_1.zipcode = zipcodeValue;
 	getWoeidNumber_1(city_1.zipcode);
-	
+
     //getWeather(city.woeid);
 }
 
 function show_1(){
 	content="";
+	content += city_1.place+"<br>"+"<br>";
 	content += "Wind chill: "+city_1.windchill+" F"+"<br>";
 	content += "Wind speed: "+city_1.windSpeed+" mph"+"<br>";
 	content += "Wind Direction: "+city_1.windDir+"<br>";
@@ -56,7 +57,30 @@ function getWeatherData_1(data){
 	getHumidity_1(data);
 	getBarometer_1(data);
 	getWind_1(data);
+	getlocation_1(data);
+	getdaytemp_1(data);
        show_1();
+}
+
+function getlocation_1(data){
+	city_1.place=data.query.results.channel.location.city;
+}
+
+function getdaytemp_1(data){
+	
+	/*var day1high=Math.round(data.query.results.channel.item.forecast[0].high);
+	var day1low=Math.round(data.query.results.channel.item.forecast[0].low);
+	city_1.day1temp=Math.round(day1high+day1low)/2;*/
+city_1.day1temp=(Math.round(data.query.results.channel.item.forecast[0].high)+Math.round(data.query.results.channel.item.forecast[0].low))/2;
+city_1.day2temp=(Math.round(data.query.results.channel.item.forecast[1].high)+Math.round(data.query.results.channel.item.forecast[1].low))/2;
+city_1.day3temp=(Math.round(data.query.results.channel.item.forecast[2].high)+Math.round(data.query.results.channel.item.forecast[2].low))/2;
+city_1.day4temp=(Math.round(data.query.results.channel.item.forecast[3].high)+Math.round(data.query.results.channel.item.forecast[3].low))/2;
+city_1.day5temp=(Math.round(data.query.results.channel.item.forecast[4].high)+Math.round(data.query.results.channel.item.forecast[4].low))/2;
+city_1.day1=data.query.results.channel.item.forecast[0].day;
+city_1.day2=data.query.results.channel.item.forecast[1].day;
+city_1.day3=data.query.results.channel.item.forecast[2].day;
+city_1.day4=data.query.results.channel.item.forecast[3].day;
+city_1.day5=data.query.results.channel.item.forecast[4].day;
 }
 
 function getWoeid_1(data){
@@ -176,12 +200,13 @@ function insertandcheck_2()
 	}
 	city_2.zipcode = zipcodeValue;
 	getWoeidNumber_2(city_2.zipcode);
-	
+
     //getWeather(city.woeid);
 }
 
 function show_2(){
 	content="";
+	content += city_2.place+"<br>"+"<br>";
 	content += "Wind chill: "+city_2.windchill+" F"+"<br>";
 	content += "Wind speed: "+city_2.windSpeed+" mph"+"<br>";
 	content += "Wind Direction: "+city_2.windDir+"<br>";
@@ -222,7 +247,26 @@ function getWeatherData_2(data){
 	getHumidity_2(data);
 	getBarometer_2(data);
 	getWind_2(data);
+	getlocation_2(data);
+	getdaytemp_2(data);
         show_2();
+}
+
+function getlocation_2(data){
+	city_2.place=data.query.results.channel.location.city;
+}
+
+function getdaytemp_2(data){
+city_2.day1temp=(Math.round(data.query.results.channel.item.forecast[0].high)+Math.round(data.query.results.channel.item.forecast[0].low))/2;
+city_2.day2temp=(Math.round(data.query.results.channel.item.forecast[1].high)+Math.round(data.query.results.channel.item.forecast[1].low))/2;
+city_2.day3temp=(Math.round(data.query.results.channel.item.forecast[2].high)+Math.round(data.query.results.channel.item.forecast[2].low))/2;
+city_2.day4temp=(Math.round(data.query.results.channel.item.forecast[3].high)+Math.round(data.query.results.channel.item.forecast[3].low))/2;
+city_2.day5temp=(Math.round(data.query.results.channel.item.forecast[4].high)+Math.round(data.query.results.channel.item.forecast[4].low))/2;
+city_2.day1=data.query.results.channel.item.forecast[0].day;
+city_2.day2=data.query.results.channel.item.forecast[1].day;
+city_2.day3=data.query.results.channel.item.forecast[2].day;
+city_2.day4=data.query.results.channel.item.forecast[3].day;
+city_2.day5=data.query.results.channel.item.forecast[4].day;
 }
 
 function getWoeid_2(data){
@@ -319,4 +363,63 @@ function getWind_2(data){
 		city_2.windDir="NNW";
 	}
 
+}
+
+function compare(){
+
+comparison="";
+	
+	if (city_1.day1temp<city_2.day1temp){
+	   differenceday1=city_2.day1temp-city_1.day1temp;
+       comparison += city_1.place+" is " + differenceday1 + " degrees colder than " +city_2.place+" today. <br>";
+    }
+    else{
+    	differenceday1=city_1.day1temp-city_2.day1temp;
+        comparison += city_1.place+" is " + differenceday1 + " degrees warmer than " +city_2.place+" today. <br>";
+    }
+    
+    if (city_1.day2temp<city_2.day2temp){
+	   differenceday2=city_2.day2temp-city_1.day2temp;
+       comparison += city_1.place+" is " + differenceday2 + " degrees colder than " +city_2.place+" tomorrow. <br>";
+    }
+    else{
+    	differenceday2=city_1.day2temp-city_2.day2temp;
+        comparison += city_1.place+" is " + differenceday2 + " degrees warmer than " +city_2.place+" tomorrow. <br>";
+    }
+    
+    if (city_1.day3temp<city_2.day3temp){
+	   differenceday3=city_2.day3temp-city_1.day3temp;
+       comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + "<br>";
+    }
+    else{
+    	differenceday3=city_1.day3temp-city_2.day3temp;
+        comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +"<br>";
+    }
+
+    if (city_1.day4temp<city_2.day4temp){
+	   differenceday4=city_2.day4temp-city_1.day4temp;
+       comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+"<br>";
+    }
+    else{
+    	differenceday4=city_1.day4temp-city_2.day4temp;
+        comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+"<br>";
+    }
+
+    if (city_1.day5temp<city_2.day5temp){
+	   differenceday5=city_2.day5temp-city_1.day5temp;
+       comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+    else{
+    	differenceday5=city_1.day5temp-city_2.day5temp;
+        comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+
+    document.getElementById('compare').innerHTML = comparison;
+
+}
+
+
+function getcomparision(){
+
+	compare();
 }
