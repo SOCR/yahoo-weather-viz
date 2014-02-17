@@ -6,29 +6,54 @@
 <title>Weather App</title>
 <script type="text/javascript" src="weather.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+<style>
+h1 {text-align:center;}       
+/*form.searchbar_1 {text-align:left;} 
+div.city_1{text-align:left;}
+div.city_2{text-align:right;}*/
+</style>
 </head>
 <!--<script type="text/javascript" src="jquery-1.10.2.min.js"></script>-->
 <!--<script type="text/javascript" src="ajax.js"></script>-->
 
 <body>
-<form id="form">
+<h1>Weather</h1>
+<div id="display_1" class="city_1" style="height:800px;width:500px;float:left;">
+<form id="form_1">
        <h2>Please Type In the Zipcode</h2>
 <hr size="3"/>
-    <input id="zipcode" type="text" />
+    <input id="zipcode_1" type="text" />
     <br>
-    <input type="button" id='getit' value="get it!" onclick="insertandcheck();">
-    <input type="button" value="Show data" onclick="show();">
+    <input type="button" id='getit_1' value="get it!" onclick="insertandcheck_1();">
+    <input type="button" value="Show data" onclick="show_1();">
     <br>
     
     <hr>
     </form>
-    
-    <div id="display">
          </div>
          
+<div id="display_2" class="city_2" style="height:800px;width:500px;float:right;">
+<form id="form_2">
+       <h2>Please Type In the Zipcode</h2>
+<hr size="3"/>
+    <input id="zipcode_2" type="text" />
+    <br>
+    <input type="button" id='getit_2' value="get it!" onclick="insertandcheck_2();">
+    <input type="button" value="Show data" onclick="show_2();">
+    <br>
+    
+    <hr>
+    </form>
+         </div>
 
 
 
+</body>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
 
 </body>
 
