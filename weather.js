@@ -60,6 +60,7 @@ function getWeatherData_1(data){
 	getlocation_1(data);
 	getdaytemp_1(data);
        show_1();
+       compare();
 }
 
 function getlocation_1(data){
@@ -250,6 +251,7 @@ function getWeatherData_2(data){
 	getlocation_2(data);
 	getdaytemp_2(data);
         show_2();
+        compare();
 }
 
 function getlocation_2(data){
@@ -418,8 +420,8 @@ comparison="";
 
 }
 
-
+/*
 function getcomparision(){
 
 	compare();
-}
+}*/
