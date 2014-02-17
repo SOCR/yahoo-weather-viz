@@ -1,27 +1,17 @@
 var city_1=new Object();
-var counter = 0;
 
 function insertandcheck_1()
 {
-	var zipcodeValue=$(#zipcode).val();
+	var zipcodeValue=document.getElementById('zipcode').value;
 	if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5)
 	{
 		alert("Please type in the valid zipcode!");
 		return false;
 	}
-
-	if(counter==0){
-		city_1.zipcode = zipcodeValue;
-		getWoeidNumber_1(city_1.zipcode);
-		counter=1;
-    //getWeather(city.woeid);}
-	}
-	else if(counter==1){
-		city_2.zipcode = zipcodeValue;
-		getWoeidNumber_2(city_2.zipcode);
-		counter=2;
-	}
-	
+	city_1.zipcode = zipcodeValue;
+	getWoeidNumber_1(city_1.zipcode);
+	show_1();
+    //getWeather(city.woeid);
 }
 
 function show_1(){
@@ -174,6 +164,20 @@ if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5)
 });*/
 
 var city_2=new Object();
+
+function insertandcheck_2()
+{
+	var zipcodeValue=document.getElementById('zipcode').value;
+	if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5)
+	{
+		alert("Please type in the valid zipcode!");
+		return false;
+	}
+	city_2.zipcode = zipcodeValue;
+	getWoeidNumber_2(city_2.zipcode);
+	show_2();
+    //getWeather(city.woeid);
+}
 
 function show_2(){
 	content="";
