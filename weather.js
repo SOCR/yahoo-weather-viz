@@ -1,19 +1,50 @@
-var city_1=new Object();
-
-function insertandcheck_1()
-{
-	var zipcodeValue=document.getElementById('zipcode').value;
+$(document).ready(function(){
+    var city_1=new Object();
+    var city_2=new Object();
+    var counter=1;
+    
+    $("#question").hide();
+    
+  $("#getit").click(function(){
+      if(counter==1){
+        insertandcheck_1();
+        setTimeout(show_1,500);
+        counter=2;
+      }
+      else if(counter==2){
+        insertandcheck_2();
+        setTimeout(show_2,500);
+          counter=3;
+      }
+      else if(counter==3){
+          $("#question").show();
+          $("#left").click(function(){
+              insertandcheck_1();
+              setTimeout(show_1,500);
+               $("#question").hide();
+          });
+          $("#right").click(function(){
+              insertandcheck_2();
+              setTimeout(show_2,500);
+               $("#question").hide();
+          });
+      }
+  });
+    
+function insertandcheck_1(){
+	var zipcodeValue =document.getElementById('zipcode').value;
 	if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5)
 	{
 		alert("Please type in the valid zipcode!");
 		return false;
 	}
-	city_1.zipcode = zipcodeValue;
-	getWoeidNumber_1(city_1.zipcode);
-
+    else{
+	   city_1.zipcode = zipcodeValue;
+        getWoeidNumber_1(city_1.zipcode);
+    }
     //getWeather(city.woeid);
-}
-
+};
+    
 function show_1(){
 	content="";
 	content += city_1.place+"<br>"+"<br>";
@@ -26,8 +57,8 @@ function show_1(){
 	content += "Barometer: "+city_1.barometer+"<br>";
 	content += "Five day forecast: "+city_1.fivedays+"<br>";
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
-	document.getElementById('display_1').innerHTML = content;
-}
+	$("#display_1").html(content);
+};
 
 function getWoeidNumber_1(x){
 	var firstPart = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22";
@@ -37,7 +68,7 @@ function getWoeidNumber_1(x){
 		url: searchURL,
 		success: getWoeid_1
 		});
-}
+};
 
 function getWeather_1(y){
        var fPart="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D";
@@ -47,7 +78,7 @@ function getWeather_1(y){
              url: wURL,
              success: getWeatherData_1
              });
-}
+};
 
 function getWeatherData_1(data){
 	getWindChill_1(data);
@@ -59,9 +90,8 @@ function getWeatherData_1(data){
 	getWind_1(data);
 	getlocation_1(data);
 	getdaytemp_1(data);
-       show_1();
-       compare();
-}
+	compare();
+};
 
 function getlocation_1(data){
 	city_1.place=data.query.results.channel.location.city;
@@ -87,43 +117,43 @@ city_1.day5=data.query.results.channel.item.forecast[4].day;
 function getWoeid_1(data){
 	//alert('Hi');
 	city_1.woeid= data.query.results.place[0].woeid;
-    getWeather_1(city_1.woeid);
-}
+      getWeather_1(city_1.woeid);
+};
 
 function getWindChill_1(data){
 	city_1.windchill= data.query.results.channel.wind.chill;
-}
+};
 
 function getSunrise_1(data){
 	city_1.sunrise= data.query.results.channel.astronomy.sunrise;
-}
+};
 
 function getSunset_1(data){
 	city_1.sunset= data.query.results.channel.astronomy.sunset;
-}
+};
 
 function getFivedays_1(data){
 	city_1.fivedays= data.query.results.channel.item.description;
-}
+};
 
 function getHumidity_1(data){
 	city_1.humidity= data.query.results.channel.atmosphere.humidity;
-}
+};
 
 function getBarometer_1(data){
 	pres= data.query.results.channel.atmosphere.rising;
 	switch(pres)
 	{
-		case "1":
+		case 1:
 		city_1.barometer="R";
 		break;
-		case "2":
+		case 2:
 		city_1.barometer="F";
 		break;
 		default:
 		city_1.barometer="S";
 	}
-}
+};
 
 function getWind_1(data){
 	dir= data.query.results.channel.wind.direction;
@@ -178,20 +208,9 @@ function getWind_1(data){
 		city_1.windDir="NNW";
 	}
 
-}
-/*$('#getit').click(function() {
-	var zipcodeValue=document.getElementById('zipcode').value;
-if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5)
-  {
-  alert("Please type in the valid zipcode!");
-  return false;
-  }
-  city.zipcode=zipcodeValue;
-});*/
-
-var city_2=new Object();
-
-function insertandcheck_2()
+};
+    
+    function insertandcheck_2()
 {
 	var zipcodeValue=document.getElementById('zipcode').value;
 	if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5)
@@ -201,9 +220,8 @@ function insertandcheck_2()
 	}
 	city_2.zipcode = zipcodeValue;
 	getWoeidNumber_2(city_2.zipcode);
-
     //getWeather(city.woeid);
-}
+};
 
 function show_2(){
 	content="";
@@ -217,8 +235,8 @@ function show_2(){
 	content += "Barometer: "+city_2.barometer+"<br>";
 	content += "Five day forecast: "+city_2.fivedays+"<br>";
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
-	document.getElementById('display_2').innerHTML = content;
-}
+	$("#display_2").html(content);
+};
 
 function getWoeidNumber_2(x){
 	var firstPart = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22";
@@ -228,7 +246,7 @@ function getWoeidNumber_2(x){
 		url: searchURL,
 		success: getWoeid_2
 		});
-}
+};
 
 function getWeather_2(y){
        var fPart="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D";
@@ -238,7 +256,7 @@ function getWeather_2(y){
              url: wURL,
              success: getWeatherData_2
              });
-}
+};
 
 function getWeatherData_2(data){
 	getWindChill_2(data);
@@ -250,9 +268,8 @@ function getWeatherData_2(data){
 	getWind_2(data);
 	getlocation_2(data);
 	getdaytemp_2(data);
-        show_2();
-        compare();
-}
+	compare();
+};
 
 function getlocation_2(data){
 	city_2.place=data.query.results.channel.location.city;
@@ -275,42 +292,42 @@ function getWoeid_2(data){
 	//alert('Hi');
 	city_2.woeid= data.query.results.place[0].woeid;
     getWeather_2(city_2.woeid);
-}
+};
 
 function getWindChill_2(data){
 	city_2.windchill= data.query.results.channel.wind.chill;
-}
+};
 
 function getSunrise_2(data){
 	city_2.sunrise= data.query.results.channel.astronomy.sunrise;
-}
+};
 
 function getSunset_2(data){
 	city_2.sunset= data.query.results.channel.astronomy.sunset;
-}
+};
 
 function getFivedays_2(data){
 	city_2.fivedays= data.query.results.channel.item.description;
-}
+};
 
 function getHumidity_2(data){
 	city_2.humidity= data.query.results.channel.atmosphere.humidity;
-}
+};
 
 function getBarometer_2(data){
 	pres= data.query.results.channel.atmosphere.rising;
 	switch(pres)
 	{
-		case "1":
+		case 1:
 		city_2.barometer="R";
 		break;
-		case "2":
+		case 2:
 		city_2.barometer="F";
 		break;
 		default:
 		city_2.barometer="S";
 	}
-}
+};
 
 function getWind_2(data){
 	dir= data.query.results.channel.wind.direction;
@@ -364,10 +381,10 @@ function getWind_2(data){
 	else{
 		city_2.windDir="NNW";
 	}
-
 }
 
-function compare(){
+    
+    function compare(){
 
 comparison="";
 	
@@ -416,12 +433,9 @@ comparison="";
         comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
     }
 
-    document.getElementById('compare').innerHTML = comparison;
+    $("#compare").html(comparison);
 
 }
 
-/*
-function getcomparision(){
 
-	compare();
-}*/
+}); 
