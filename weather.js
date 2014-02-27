@@ -144,10 +144,10 @@ function getBarometer_1(data){
 	pres= data.query.results.channel.atmosphere.rising;
 	switch(pres)
 	{
-		case 1:
+		case '1':
 		city_1.barometer="R";
 		break;
-		case 2:
+		case '2':
 		city_1.barometer="F";
 		break;
 		default:
@@ -318,10 +318,10 @@ function getBarometer_2(data){
 	pres= data.query.results.channel.atmosphere.rising;
 	switch(pres)
 	{
-		case 1:
+		case '1':
 		city_2.barometer="R";
 		break;
-		case 2:
+		case '2':
 		city_2.barometer="F";
 		break;
 		default:
