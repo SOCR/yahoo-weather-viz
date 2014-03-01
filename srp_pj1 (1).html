@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,46 +9,77 @@
 <script src="jquery-2.1.0.min.js"></script>
 <script src="weather.js"></script>
 <style>
-body {background-image:url('http://www.chaoswallpapers.com/wallpapers/pretty_cloudy_sunshine_weather-1680x1050.jpg');}
+body {background-image:url('http://www.chaoswallpapers.com/wallpapers/pretty_cloudy_sunshine_weather-1680x1050.jpg');
+font:"Comic Sans MS", cursive;}
 h1 {font-family:Georgia,serif;color:#ccc;text-align:center;} 
-form.searchbar {text-align:center;} 
+form.form-search {text-align:center;} 
+
 .wea{
-	color: #fff;
-	font-size:50px;
-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00DEFF, 0 0 70px #00DEFF, 0 0 80px #00DEFF, 0 0 100px #00DEFF, 0 0 150px #00DEFF;
+color: #fff;
+text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.1), 0 0 0 rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.5);
 }
+
+.forecast{
+border-radius: 25px 25px 25px 25px;
+-moz-border-radius: 25px 25px 25px 25px;
+-webkit-border-radius: 25px 25px 25px 25px;
+border: 0px solid #f7f2f7;
+width:400px;
+height:400px;
+background:rgba(40,48,77,0.5);
+padding:20px;
+float:left;
+	}
+	
 </style>
 </head>
+
 <body>
-
-
-     <h1 class="wea"style="Courier">SOCR WEATHER</h1>\n
-    
-
-
-     
-<form class="searchbar">
-<h4>Please Type In the Zipcode</h4>
-<input id="zipcode" class="form-control" type="text" />
-<br>
-<button class="btn btn-primary" type="button" id='getit'>Get Weather Data</button>
-<br>
-
-
-
-
-<p id="question">Which side of data do you want to replace?
-<button class="btn btn-alert" type="button" id="left">left</button>
-<button class="btn btn-alert" type="button" id="right">right</button>
-</p>
-</form>    
-         
-<div id="display_1" class="city_1" style="padding:20px;border-radius:10px;border:10px solid #EE872A;height:600px;width:400px;float:left;">
-</div>
-         
-<div id="display_2" class="city_2" style="padding:20px;border-radius:10px;border:10px solid #EE872A;height:600px;width:400px;float:right;">
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">SOCR Weather</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="http://www.socr.ucla.edu">SOCR</a></li>
+      <li><a href="http://www.ucla.edu">UCLA</a></li>
+    </ul>
+  </div>
 </div>
 
-<div id="compare" style="padding:20px;border-radius:10px;border:10px solid #EE872A;clear:both;text-align:center;">
+     <h1 class="wea"style="Courier">SOCR WEATHER</h1>
+  
+<form class="form-search">
+<input id="zipcode" class="input-medium search-query" style="width:168px;" type="text" value="Please type in the zipcode" />
+<button class="btn btn-small btn-primary disabled" type="button" id='getit'>Get Weather</button>
+</form> 
+<div id="question"  align="center" >
+<p><font color="#485c99" size="+1">Which side of data do you want to replace?</font></p>
+<div class="btn-group">
+  <button class="btn" id="left">Left</button>
+  <button class="btn" id="right">Right</button>
+</div>
+</div>
+
+<div class="city_left">
+
+<div id="display_cityname1">
+</div>
+<div id="display_forecast1" class="forecast">
+</div>
+
+</div>
+
+<div class="city_right">
+
+<div id="display_cityname2" >
+</div>
+
+</div>
+
+
+
+
+
+
 </body>
 </html>
