@@ -2,8 +2,12 @@ $(document).ready(function(){
     var city_1=new Object();
     var city_2=new Object();
     var counter=1;
+	
+	$("#zipcode").focus(function(){
+		$(this).val("");
+	})
     
-    $("#question").hide();
+   $("#question").hide();
     
   $("#getit").click(function(){
       if(counter==1){
@@ -46,19 +50,42 @@ function insertandcheck_1(){
 };
     
 function show_1(){
-	content="";
-	content += city_1.place+"<br>"+"<br>";
-	content += "Wind chill: "+city_1.windchill+" F"+"<br>";
-	content += "Wind speed: "+city_1.windSpeed+" mph"+"<br>";
-	content += "Wind Direction: "+city_1.windDir+"<br>";
-	content += "Sunrise: "+city_1.sunrise+"<br>";
-	content += "Sunset: "+city_1.sunset+"<br>";
-	content += "Humidity: "+city_1.humidity+" %"+"<br>";
-	content += "Barometer: "+city_1.barometer+"<br>";
-	content += "Five day forecast: "+city_1.fivedays+"<br>";
+	
+	content_cityname=city_1.place;
+	
+    content_details="";
+	content_details += "Wind chill: "+city_1.windchill+" F"+"<br>"
+	content_details += "Humidity: "+city_1.humidity+" %"+"<br>";
+	
+	content_wind="";
+	content_wind += "Wind speed: "+city_1.windSpeed+" mph"+"<br>";
+	content_wind += "Wind Direction: "+city_1.windDir+"<br>";
+	content_wind += "Barometer: "+city_1.barometer+"<br>";
+	
+	content_sunandmoon="";
+	content_sunandmoon += "Sunrise: "+city_1.sunrise+"<br>";
+	content_sunandmoon += "Sunset: "+city_1.sunset+"<br>";
+	
+	content_todayhl=city_1.day1high+city_1.day1low;
+	content_current=city_1.current;
+	
+	content_forcast="";
+	content_forcast +=city_1.day1+"   "+city_1.day1high+city_1.day1low+"<br>";
+	content_forcast +=city_1.day2+"   "+city_1.day2high+city_1.day2low+"<br>";
+	content_forcast +=city_1.day3+"   "+city_1.day3high+city_1.day3low+"<br>";
+	content_forcast +=city_1.day4+"   "+city_1.day4high+city_1.day4low+"<br>";
+	content_forcast +=city_1.day5+"   "+city_1.day5high+city_1.day5low+"<br>";
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
-	$("#display_1").html(content);
+	$("#display_cityname1").html(content_cityname);
+	$("#display_details1").html(content_details);
+	$("#display_wind1").html(content_wind);
+	$("#display_sunandmoon1").html(content_sunandmoon);
+	$("#display_todayhl1").html(content_todayhl);
+	$("#display_current1").html(content_current);
+	$("#display_forecast1").html(content_forcast);
+	
 };
+
 
 function getWoeidNumber_1(x){
 	var firstPart = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22";
@@ -112,6 +139,17 @@ city_1.day2=data.query.results.channel.item.forecast[1].day;
 city_1.day3=data.query.results.channel.item.forecast[2].day;
 city_1.day4=data.query.results.channel.item.forecast[3].day;
 city_1.day5=data.query.results.channel.item.forecast[4].day;
+
+city_1.day1high=data.query.results.channel.item.forecast[0].high;
+city_1.day1low=data.query.results.channel.item.forecast[0].low;
+city_1.day2high=data.query.results.channel.item.forecast[1].high;
+city_1.day2low=data.query.results.channel.item.forecast[1].low;
+city_1.day3high=data.query.results.channel.item.forecast[2].high;
+city_1.day3low=data.query.results.channel.item.forecast[2].low;
+city_1.day4high=data.query.results.channel.item.forecast[3].high;
+city_1.day4low=data.query.results.channel.item.forecast[3].low;
+city_1.day5high=data.query.results.channel.item.forecast[4].high;
+city_1.day5low=data.query.results.channel.item.forecast[4].low;
 }
 
 function getWoeid_1(data){
@@ -133,7 +171,7 @@ function getSunset_1(data){
 };
 
 function getFivedays_1(data){
-	city_1.fivedays= data.query.results.channel.item.description;
+	city_1.current= data.query.results.channel.item.condition.temp;
 };
 
 function getHumidity_1(data){
@@ -224,18 +262,39 @@ function getWind_1(data){
 };
 
 function show_2(){
-	content="";
-	content += city_2.place+"<br>"+"<br>";
-	content += "Wind chill: "+city_2.windchill+" F"+"<br>";
-	content += "Wind speed: "+city_2.windSpeed+" mph"+"<br>";
-	content += "Wind Direction: "+city_2.windDir+"<br>";
-	content += "Sunrise: "+city_2.sunrise+"<br>";
-	content += "Sunset: "+city_2.sunset+"<br>";
-	content += "Humidity: "+city_2.humidity+" %"+"<br>";
-	content += "Barometer: "+city_2.barometer+"<br>";
-	content += "Five day forecast: "+city_2.fivedays+"<br>";
+	content_cityname=city_2.place;
+	
+    content_details="";
+	content_details += "Wind chill: "+city_2.windchill+" F"+"<br>"
+	content_details += "Humidity: "+city_2.humidity+" %"+"<br>";
+	
+	content_wind="";
+	content_wind += "Wind speed: "+city_2.windSpeed+" mph"+"<br>";
+	content_wind += "Wind Direction: "+city_2.windDir+"<br>";
+	content_wind += "Barometer: "+city_2.barometer+"<br>";
+	
+	content_sunandmoon="";
+	content_sunandmoon += "Sunrise: "+city_2.sunrise+"<br>";
+	content_sunandmoon += "Sunset: "+city_2.sunset+"<br>";
+	
+    content_todayhl=city_2.day1high+city_2.day1low;
+	content_current=city_2.current;
+	
+	content_forcast="";
+	content_forcast +=city_2.day1+"   "+city_2.day1high+city_2.day1low+"<br>";
+	content_forcast +=city_2.day2+"   "+city_2.day2high+city_2.day2low+"<br>";
+	content_forcast +=city_2.day3+"   "+city_2.day3high+city_2.day3low+"<br>";
+	content_forcast +=city_2.day4+"   "+city_2.day4high+city_2.day4low+"<br>";
+	content_forcast +=city_2.day5+"   "+city_2.day5high+city_2.day5low+"<br>";
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
-	$("#display_2").html(content);
+	$("#display_cityname2").html(content_cityname);
+	$("#display_details2").html(content_details);
+	$("#display_wind2").html(content_wind);
+	$("#display_sunandmoon2").html(content_sunandmoon);
+	$("#display_todayhl2").html(content_todayhl);
+	$("#display_current2").html(content_current);
+	$("#display_forcast2").html(content_forcast);
+	
 };
 
 function getWoeidNumber_2(x){
@@ -286,6 +345,17 @@ city_2.day2=data.query.results.channel.item.forecast[1].day;
 city_2.day3=data.query.results.channel.item.forecast[2].day;
 city_2.day4=data.query.results.channel.item.forecast[3].day;
 city_2.day5=data.query.results.channel.item.forecast[4].day;
+
+city_2.day1high=data.query.results.channel.item.forecast[0].high;
+city_2.day1low=data.query.results.channel.item.forecast[0].low;
+city_2.day2high=data.query.results.channel.item.forecast[1].high;
+city_2.day2low=data.query.results.channel.item.forecast[1].low;
+city_2.day3high=data.query.results.channel.item.forecast[2].high;
+city_2.day3low=data.query.results.channel.item.forecast[2].low;
+city_2.day4high=data.query.results.channel.item.forecast[3].high;
+city_2.day4low=data.query.results.channel.item.forecast[3].low;
+city_2.day5high=data.query.results.channel.item.forecast[4].high;
+city_2.day5low=data.query.results.channel.item.forecast[4].low;
 }
 
 function getWoeid_2(data){
@@ -307,7 +377,7 @@ function getSunset_2(data){
 };
 
 function getFivedays_2(data){
-	city_2.fivedays= data.query.results.channel.item.description;
+	city_2.current= data.query.results.channel.item.condition.temp;
 };
 
 function getHumidity_2(data){
