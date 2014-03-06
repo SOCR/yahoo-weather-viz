@@ -69,19 +69,13 @@ function show_1(){
 	content_todayhl=city_1.day1high+city_1.day1low;
 	content_current=city_1.current;
 	
-        /*content_forcast="";
-	content_forcast +=city_1.day1+"   "+city_1.day1high+city_1.day1low+"<br>";
-	content_forcast +=city_1.day2+"   "+city_1.day2high+city_1.day2low+"<br>";
-	content_forcast +=city_1.day3+"   "+city_1.day3high+city_1.day3low+"<br>";
-	content_forcast +=city_1.day4+"   "+city_1.day4high+city_1.day4low+"<br>";
-	content_forcast +=city_1.day5+"   "+city_1.day5high+city_1.day5low+"<br>";*/
-	content_forcast="<center><table width="75%" border="1">";
-	content_forcast +="<tr align="center"><td>"+city_1.day1+"</td><td>"+city_1.day1high+"</td><td>"+city_1.day1low+"</td></tr>";
-	content_forcast +="<tr align="center"><td>"+city_1.day2+"</td><td>"+city_1.day2high+"</td><td>"+city_1.day2low+"</td></tr>";
-	content_forcast +="<tr align="center"><td>"+city_1.day3+"</td><td>"+city_1.day3high+"</td><td>"+city_1.day3low+"</td></tr>";
-	content_forcast +="<tr align="center"><td>"+city_1.day4+"</td><td>"+city_1.day4high+"</td><td>"+city_1.day4low+"</td></tr>";
-	content_forcast +="<tr align="center"><td>"+city_1.day5+"</td><td>"+city_1.day5high+"</td><td>"+city_1.day5low+"</td></tr>";
-	content_forcast +="</table></center>";
+        content_forcast="";
+	content_forcast +=city_1.day1+"   "+city_1.day1high+"   "+city_1.day1low+"<br>";
+	content_forcast +=city_1.day2+"   "+city_1.day2high+"   "+city_1.day2low+"<br>";
+	content_forcast +=city_1.day3+"   "+city_1.day3high+"   "+city_1.day3low+"<br>";
+	content_forcast +=city_1.day4+"   "+city_1.day4high+"   "+city_1.day4low+"<br>";
+	content_forcast +=city_1.day5+"   "+city_1.day5high+"   "+city_1.day5low+"<br>";
+
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
 	$("#display_cityname1").html(content_cityname);
 	$("#display_details1").html(content_details);
