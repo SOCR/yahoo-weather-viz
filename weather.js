@@ -67,7 +67,7 @@ function show_1(){
 	content_sunandmoon += "Sunset: "+city_1.sunset+"<br>";
 	
 	content_todayhl=city_1.day1high+city_1.day1low;
-	content_current=city_1.current+" °";
+	content_current=city_1.current+"°";
 	
         content_forcast="";
 	content_forcast +=city_1.day1+"   "+city_1.day1high+"   "+city_1.day1low+"<br>";
@@ -279,7 +279,7 @@ function show_2(){
 	content_sunandmoon += "Sunset: "+city_2.sunset+"<br>";
 	
     content_todayhl=city_2.day1high+city_2.day1low;
-	content_current=city_2.current+" °";
+	content_current=city_2.current+"°";
 	
 	content_forcast="";
 	content_forcast +=city_2.day1+"   "+city_2.day1high+city_2.day1low+"<br>";
