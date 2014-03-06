@@ -67,7 +67,7 @@ function show_1(){
 	content_sunandmoon += "Sunset: "+city_1.sunset+"<br>";
 	
 	content_todayhl=city_1.day1high+city_1.day1low;
-	content_current=city_1.current+" F";
+	content_current=city_1.current+" °";
 	
         content_forcast="";
 	content_forcast +=city_1.day1+"   "+city_1.day1high+"   "+city_1.day1low+"<br>";
