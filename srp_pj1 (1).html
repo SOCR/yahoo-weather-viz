@@ -23,7 +23,7 @@ text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgb
 	top:200px;
 	left:10px;
 	font-family:Georgia;
-	font-size:40px;
+	font-size:30px;
 	color:black;
 }
 .city_right{
@@ -31,11 +31,28 @@ text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgb
 	top:200px;
 	right:10px;
 	font-family:Georgia;
-	font-size:40px;
+	font-size:30px;
+	color:black;
+}
+
+.current1{
+	position:fixed;
+	top:260px;
+	left:10px;
+	font-family:Georgia;
+	font-size:60px;
+	color:black;
+}
+.current2{
+	position:fixed;
+	top:260px;
+	right:10px;
+	font-family:Georgia;
+	font-size:60px;
 	color:black;
 }
 .forecast{
-	position:fixed;
+	
 	top:500px;
 	left:10px;
 
@@ -80,14 +97,15 @@ float:left;
 </div>
 </div>
 
-<div class="city_left" id="display_cityname1">
-</div>
+<div class="city_left" id="display_cityname1"></div>
 
-<div class="city_right" id="display_cityname2">
-</div>
+<div class="city_right" id="display_cityname2"></div>
 
-<div id="display_forecast1" class="forecast">
-</div>
+<div class="current1" id="display_current1"></div>
+
+<div class="current2" id="display_current2"></div>
+
+<div id="display_forecast1" class="forecast"></div>
 
 
 
