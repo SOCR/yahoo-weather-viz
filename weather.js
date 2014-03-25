@@ -289,11 +289,11 @@ function show_2(){
 	
 	content_forcast = "<p>Forcast</p>";
         content_forcast +="<p align=center>" ;
-        content_forcast +="<table border='1' align=center><tr><td align=center>" + city_1.day1 + "</td><td align=center>" + city_1.day1high + "</td><td align=center>" + city_1.day1low +"</td></tr>"
-                                                       + "<tr><td align=center>" + city_1.day2 + "</td><td align=center>" + city_1.day2high + "</td><td align=center>" + city_1.day2low +"</td></tr>"  
-                                                       + "<tr><td align=center>" + city_1.day3 + "</td><td align=center>" + city_1.day3high + "</td><td align=center>" + city_1.day3low +"</td></tr>"
-                                                       + "<tr><td align=center>" + city_1.day4 + "</td><td align=center>" + city_1.day4high + "</td><td align=center>" + city_1.day4low +"</td></tr>"
-                                                       + "<tr><td align=center>" + city_1.day5 + "</td><td align=center>" + city_1.day5high + "</td><td align=center>" + city_1.day5low +"</td></tr>"
+        content_forcast +="<table border='1' align=center><tr><td align=center>" + city_2.day1 + "</td><td align=center>" + city_2.day1high + "</td><td align=center>" + city_2.day1low +"</td></tr>"
+                                                       + "<tr><td align=center>" + city_2.day2 + "</td><td align=center>" + city_2.day2high + "</td><td align=center>" + city_2.day2low +"</td></tr>"  
+                                                       + "<tr><td align=center>" + city_2.day3 + "</td><td align=center>" + city_2.day3high + "</td><td align=center>" + city_2.day3low +"</td></tr>"
+                                                       + "<tr><td align=center>" + city_2.day4 + "</td><td align=center>" + city_2.day4high + "</td><td align=center>" + city_2.day4low +"</td></tr>"
+                                                       + "<tr><td align=center>" + city_2.day5 + "</td><td align=center>" + city_2.day5high + "</td><td align=center>" + city_2.day5low +"</td></tr>"
                                                        + "</table><p align=center>";
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
 	$("#display_cityname2").html(content_cityname);
