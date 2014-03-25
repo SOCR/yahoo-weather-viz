@@ -8,6 +8,10 @@ $(document).ready(function(){
 	})
     
    $("#question").hide();
+   
+ window.onload = function (){
+ 	$("#display_forecast1").hide();
+ }
     
   $("#getit").click(function(){
       if(counter==1){
@@ -78,12 +82,6 @@ function show_1(){
                                                        + "</table><p align=center>";
                            
                           
-                        
-	/*content_forcast +=city_1.day1+"   "+city_1.day1high+"   "+city_1.day1low+"<br>";
-	content_forcast +=city_1.day2+"   "+city_1.day2high+"   "+city_1.day2low+"<br>";
-	content_forcast +=city_1.day3+"   "+city_1.day3high+"   "+city_1.day3low+"<br>";
-	content_forcast +=city_1.day4+"   "+city_1.day4high+"   "+city_1.day4low+"<br>";
-	content_forcast +=city_1.day5+"   "+city_1.day5high+"   "+city_1.day5low+"<br>";*/
 
 	/*document.getElementById('display').innerHTML = city.zipcode;*/
 	$("#display_cityname1").html(content_cityname);
