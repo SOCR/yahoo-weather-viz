@@ -302,7 +302,7 @@ function show_2(){
 	$("#display_sunandmoon2").html(content_sunandmoon);
 	$("#display_todayhl2").html(content_todayhl);
 	$("#display_current2").html(content_current);
-	$("#display_forcast2").html(content_forcast);
+	$("#display_forecast2").html(content_forcast);
 	
 };
 
