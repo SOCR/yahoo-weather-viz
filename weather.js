@@ -9,9 +9,7 @@ $(document).ready(function(){
     
    $("#question").hide();
    
- window.onload = function (){
- 	$("#display_forecast1").hide();
- }
+
     
   $("#getit").click(function(){
       if(counter==1){
@@ -73,7 +71,8 @@ function show_1(){
 	content_todayhl=city_1.day1high+city_1.day1low;
 	content_current=city_1.current+"°";
 	
-        content_forcast="<p align=center>" ;
+	content_forcast = "<p>Forcast</p>";
+        content_forcast +="<p align=center>" ;
         content_forcast +="<table border='1' align=center><tr><td align=center>" + city_1.day1 + "</td><td align=center>" + city_1.day1high + "</td><td align=center>" + city_1.day1low +"</td></tr>"
                                                        + "<tr><td align=center>" + city_1.day2 + "</td><td align=center>" + city_1.day2high + "</td><td align=center>" + city_1.day2low +"</td></tr>"  
                                                        + "<tr><td align=center>" + city_1.day3 + "</td><td align=center>" + city_1.day3high + "</td><td align=center>" + city_1.day3low +"</td></tr>"
