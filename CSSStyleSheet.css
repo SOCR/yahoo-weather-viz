@@ -9,6 +9,21 @@ h1 {font-family:Georgia,serif;color:#ccc;text-align:center;}
 
 form.form-search {text-align:center;} 
 
+table {
+    height: 230px;
+    width: 96%;
+    border-style: solid;
+    padding-bottom: 30px;
+}
+
+tr{
+    border-style: solid;
+}
+
+td{
+    border-style: solid;
+}
+
 .wea{
     color: #fff;
     text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.1), 0 0 0 rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.5);
@@ -94,15 +109,16 @@ form.form-search {text-align:center;}
 .forecast{
 	position:absolute;
 	top:210px;
-	left:10px;
-    width: 60%;
-    height: 200px;
+	left:5px;
+    width: 92%;
+    height: 260px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-top:100px;
+    padding-left: 40px;
+    padding-top: 40px;
     font-size:25px;
     float:left;
 	}
