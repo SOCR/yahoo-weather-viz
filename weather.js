@@ -15,10 +15,12 @@ $(document).ready(function(){
         if(CityNumber==0){
         insertandcheck();
         setTimeout(show_1,500);
+        city_left=CityArray[CityNumber];
       }
       else if(CityNumber==1){
         insertandcheck();
         setTimeout(show_2,500);
+        city_right=CityArray[CityNumber];
       }
       else if(CityNumber>=2){
           $("#question").show();
@@ -26,11 +28,13 @@ $(document).ready(function(){
               insertandcheck();
               setTimeout(show_1,500);
                $("#question").hide();
+               city_left=CityArray[CityNumber];
           });
           $("#right").click(function(){
               insertandcheck();
               setTimeout(show_2,500);
                $("#question").hide();
+               city_right=CityArray[CityNumber];
           });
       }
       
@@ -299,8 +303,8 @@ $(document).ready(function(){
     
   function compare(){
         comparison="";
-	  city_1=CityArray[CityNumber-1];
-	  city_2=CityArray[CityNumber];
+	 city_1=city_left;
+	 city_2=city_right;
 	  
 	if (city_1.day1temp<city_2.day1temp){
 	   differenceday1=city_2.day1temp-city_1.day1temp;
