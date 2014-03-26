@@ -5,110 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Project</title>
-    <link href="https://rawgithub.com/SOCRedu/pubmed-vis-test-project/gh-pages/css/bootstrap.css" rel="stylesheet">
+    
 <script src="jquery-2.1.0.min.js"></script>
-<script src="weather.js"></script>
-<style>
-body {background-image:url('http://www.chaoswallpapers.com/wallpapers/pretty_cloudy_sunshine_weather-1680x1050.jpg'); background-size:100%;
-font:"Comic Sans MS", cursive;}
-h1 {font-family:Georgia,serif;color:#ccc;text-align:center;} 
-form.form-search {text-align:center;} 
-
-.wea{
-color: #fff;
-text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.1), 0 0 0 rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.5);
-}
-.city_left{
-        position:absolute;
-	top:200px;
-	left:20px;
-	font-family:Georgia;
-	font-size:30px;
-	color:black;
-}
-.city_right{
-        position:absolute;
-	top:200px;
-	right:30px;
-	font-family:Georgia;
-	font-size:30px;
-	color:black;
-}
-
-.current1{
-	position:absolute;
-	top:260px;
-	left:30px;
-	font-family:Georgia;
-	font-size:90px;
-	color:black;
-	font-weight:lighter;
-}
-.current2{
-	position:absolute;
-	top:260px;
-	right:30px;
-	font-family:Georgia;
-	font-size:90px;
-	color:black;
-	font-weight:lighter;
-}
-.forecast1{
-	position:absolute;
-	top:500px;
-	left:15px;
-	
-
-border-radius: 25px 25px 25px 25px;
--moz-border-radius: 25px 25px 25px 25px;
--webkit-border-radius: 25px 25px 25px 25px;
-border: 0px solid #f7f2f7;
-width:200px;
-height:200px;
-background:rgba(40,48,77,0.5);
-padding-top:100px;
-font-size:25px;
-float:left;
-	}
-
-.forecast2{
-	position:absolute;
-	top:500px;
-	right:15px;
-
-border-radius: 25px 25px 25px 25px;
--moz-border-radius: 25px 25px 25px 25px;
--webkit-border-radius: 25px 25px 25px 25px;
-border: 0px solid #f7f2f7;
-width:200px;
-height:200px;
-background:rgba(40,48,77,0.5);
-padding-top:100px;
-font-size:25px;
-float:left;
-	}
-
-.comparison{
-	position:absolute;
-	top:600px;
-	left:35%;
-	text-align: center;
-border-radius: 25px 25px 25px 25px;
--moz-border-radius: 25px 25px 25px 25px;
--webkit-border-radius: 25px 25px 25px 25px;
-border: 0px solid #f7f2f7;
-width:600px;
-height:100px;
-background:rgba(40,48,77,0.5);
-padding-top:100px;
-font-size:25px;
-float:left;	
-}
-	
-</style>
+<script src="Weatherfile.js"></script>
+<link rel="stylesheet" type="text/css" href="CSSStyleSheet.css">
+<link href="https://rawgithub.com/SOCRedu/pubmed-vis-test-project/gh-pages/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
+    
 <div class="navbar">
   <div class="navbar-inner">
     <a class="brand" href="#">SOCR Weather</a>
@@ -119,9 +24,11 @@ float:left;
     </ul>
   </div>
 </div>
+    
 <div class="row-fluid">
      <h1 class="wea"style="Courier">SOCR WEATHER</h1>
 </div>
+    
 <form class="form-search">
 <input id="zipcode" class="input-medium search-query" style="width:168px;" type="text" value="Please type in the zipcode" />
 <button class="btn btn-small btn-primary disabled" type="button" id='getit'>Get Weather</button>
@@ -147,11 +54,9 @@ float:left;
 <div id="display_forecast2" class="forecast2"></div>
 
 <div id="compare" class="comparison"></div>
-
-
-
-
-
-
+    
+    
+    
+    
 </body>
 </html>
