@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     var CityArray = new Array();
     var CityNumber = -1;
@@ -303,8 +305,8 @@ $(document).ready(function(){
     
   function compare(){
         comparison="";
-	 city_1=city_left;
-	 city_2=city_right;
+	  city_1=city_left;;
+	  city_2=city_right;
 	  
 	if (city_1.day1temp<city_2.day1temp){
 	   differenceday1=city_2.day1temp-city_1.day1temp;
@@ -360,4 +362,3 @@ $(document).ready(function(){
    }  
     
 })
-
