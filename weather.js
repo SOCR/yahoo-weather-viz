@@ -33,7 +33,8 @@ $(document).ready(function(){
                $("#question").hide();
           });
       }
-        
+      
+
     })
    
     function insertandcheck(){
@@ -296,6 +297,63 @@ $(document).ready(function(){
 
     };
     
+  function compare(){
+        comparison="";
+	  city_1=CityArray[CityNumber-1];
+	  city_2=CityArray[CityNumber];
+	  
+	if (city_1.day1temp<city_2.day1temp){
+	   differenceday1=city_2.day1temp-city_1.day1temp;
+       comparison += city_1.place+" is " + differenceday1 + " degrees colder than " +city_2.place+" today. <br>";
+    }
+    else{
+    	differenceday1=city_1.day1temp-city_2.day1temp;
+        comparison += city_1.place+" is " + differenceday1 + " degrees warmer than " +city_2.place+" today. <br>";
+    }
     
+    if (city_1.day2temp<city_2.day2temp){
+	   differenceday2=city_2.day2temp-city_1.day2temp;
+       comparison += city_1.place+" is " + differenceday2 + " degrees colder than " +city_2.place+" tomorrow. <br>";
+    }
+    else{
+    	differenceday2=city_1.day2temp-city_2.day2temp;
+        comparison += city_1.place+" is " + differenceday2 + " degrees warmer than " +city_2.place+" tomorrow. <br>";
+    }
+    
+    if (city_1.day3temp<city_2.day3temp){
+	   differenceday3=city_2.day3temp-city_1.day3temp;
+       comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + "<br>";
+    }
+    else{
+    	differenceday3=city_1.day3temp-city_2.day3temp;
+        comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +"<br>";
+    }
+
+    if (city_1.day4temp<city_2.day4temp){
+	   differenceday4=city_2.day4temp-city_1.day4temp;
+       comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+"<br>";
+    }
+    else{
+    	differenceday4=city_1.day4temp-city_2.day4temp;
+        comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+"<br>";
+    }
+
+    if (city_1.day5temp<city_2.day5temp){
+	   differenceday5=city_2.day5temp-city_1.day5temp;
+       comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+    else{
+    	differenceday5=city_1.day5temp-city_2.day5temp;
+        comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+    
+        if(CityNumber >=1){
+         $("#compare").html(comparison);
+         }
+         else{
+         $("#compare").hide();
+         }
+   }  
     
 })
+
