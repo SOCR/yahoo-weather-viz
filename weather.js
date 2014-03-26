@@ -91,8 +91,8 @@ $(document).ready(function(){
             /*document.getElementById('display').innerHTML = city.zipcode;*/
             $("#display_cityname1").html(content_cityname);
             $("#display_details1").html(content_details);
-            $("#display_wind1").html(content_wind);
-            $("#display_sunandmoon1").html(content_sunandmoon);
+            $("#display_windpressure1").html(content_wind);
+            $("#display_sunmoon1").html(content_sunandmoon);
             $("#display_todayhl1").html(content_todayhl);
             $("#display_current1").html(content_current);
             $("#display_forecast1").html(content_forcast);
@@ -133,8 +133,8 @@ $(document).ready(function(){
             /*document.getElementById('display').innerHTML = city.zipcode;*/
             $("#display_cityname2").html(content_cityname);
             $("#display_details2").html(content_details);
-            $("#display_wind2").html(content_wind);
-            $("#display_sunandmoon2").html(content_sunandmoon);
+            $("#display_windpressure2").html(content_wind);
+            $("#display_sunmoon2").html(content_sunandmoon);
             $("#display_todayhl2").html(content_todayhl);
             $("#display_current2").html(content_current);
             $("#display_forecast2").html(content_forcast);
