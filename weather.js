@@ -60,10 +60,16 @@ $(document).ready(function(){
     function show_1(){
 
             content_cityname=CityArray[CityNumber].place;
+            content_state=CityArray[CityNumber].state;
+            content_country=CityArray[CityNumber].country;
+        
+            content_geo=content_state+",  "+content_country;
 
             content_details="";
-            content_details += "Wind chill: "+CityArray[CityNumber].windchill+" F"+"<br>"
+            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>";
+            content_details += "Wind chill: "+CityArray[CityNumber].windchill+" F"+"<br>";
             content_details += "Humidity: "+CityArray[CityNumber].humidity+" %"+"<br>";
+            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>";
 
             content_wind="";
             content_wind += "Wind speed: "+CityArray[CityNumber].windSpeed+" mph"+"<br>";
@@ -75,37 +81,69 @@ $(document).ready(function(){
             content_sunandmoon += "Sunset: "+CityArray[CityNumber].sunset+"<br>";
 
             content_todayhl=CityArray[CityNumber].day1high+CityArray[CityNumber].day1low;
-            content_current=CityArray[CityNumber].current+"°";
-
-            content_forcast = "<p>Forcast</p>";
-            content_forcast +="<p align=center>" ;
-            content_forcast +="<table border='1' align=center><tr><td align=center>" + CityArray[CityNumber].day1 + "</td><td align=center>" + CityArray[CityNumber].day1high + "</td><td align=center>" + CityArray[CityNumber].day1low +"</td></tr>"
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day2 + "</td><td align=center>" + CityArray[CityNumber].day2high + "</td><td align=center>" + CityArray[CityNumber].day2low +"</td></tr>"  
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day3 + "</td><td align=center>" + CityArray[CityNumber].day3high + "</td><td align=center>" + CityArray[CityNumber].day3low +"</td></tr>"
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day4 + "</td><td align=center>" + CityArray[CityNumber].day4high + "</td><td align=center>" + CityArray[CityNumber].day4low +"</td></tr>"
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day5 + "</td><td align=center>" + CityArray[CityNumber].day5high + "</td><td align=center>" + CityArray[CityNumber].day5low +"</td></tr>"
-                                                               + "</table><p align=center>";
-
-
-
-            /*document.getElementById('display').innerHTML = city.zipcode;*/
+            content_current=CityArray[CityNumber].current+"°";            
+        
             $("#display_cityname1").html(content_cityname);
+            $("#display_geo1").html(content_geo);
             $("#display_details1").html(content_details);
             $("#display_windpressure1").html(content_wind);
             $("#display_sunmoon1").html(content_sunandmoon);
             $("#display_todayhl1").html(content_todayhl);
             $("#display_current1").html(content_current);
-            $("#display_forecast1").html(content_forcast);
+            
+        
+            $("#table1 td:eq(0)").html("Today");
+            $("#table1 td:eq(1)").html("Tomorrow");
+            $("#table1 td:eq(2)").html(CityArray[CityNumber].day3);
+            $("#table1 td:eq(3)").html(CityArray[CityNumber].day4);
+            $("#table1 td:eq(4)").html(CityArray[CityNumber].day5);
+        
+            $("#table1 td:eq(5)").html(CityArray[CityNumber].code1);
+            $("#table1 td:eq(6)").html(CityArray[CityNumber].code2);
+            $("#table1 td:eq(7)").html(CityArray[CityNumber].code3);
+            $("#table1 td:eq(8)").html(CityArray[CityNumber].code4);
+            $("#table1 td:eq(9)").html(CityArray[CityNumber].code5);
+        
+            $("#table1 td:eq(10)").html(CityArray[CityNumber].date1);
+            $("#table1 td:eq(11)").html(CityArray[CityNumber].date2);
+            $("#table1 td:eq(12)").html(CityArray[CityNumber].date3);
+            $("#table1 td:eq(13)").html(CityArray[CityNumber].date4);
+            $("#table1 td:eq(14)").html(CityArray[CityNumber].date5);
+        
+            $("#table1 td:eq(15)").html(CityArray[CityNumber].daytext1);
+            $("#table1 td:eq(16)").html(CityArray[CityNumber].daytext2);
+            $("#table1 td:eq(17)").html(CityArray[CityNumber].daytext3);
+            $("#table1 td:eq(18)").html(CityArray[CityNumber].daytext4);
+            $("#table1 td:eq(19)").html(CityArray[CityNumber].daytext5);
+        
+            $("#table1 td:eq(20)").html(CityArray[CityNumber].day1high);
+            $("#table1 td:eq(21)").html(CityArray[CityNumber].day2high);
+            $("#table1 td:eq(22)").html(CityArray[CityNumber].day3high);
+            $("#table1 td:eq(23)").html(CityArray[CityNumber].day4high);
+            $("#table1 td:eq(24)").html(CityArray[CityNumber].day5high);
+        
+            $("#table1 td:eq(25)").html(CityArray[CityNumber].day1low);
+            $("#table1 td:eq(26)").html(CityArray[CityNumber].day2low);
+            $("#table1 td:eq(27)").html(CityArray[CityNumber].day3low);
+            $("#table1 td:eq(28)").html(CityArray[CityNumber].day4low);
+            $("#table1 td:eq(29)").html(CityArray[CityNumber].day5low);
 
     };
     
      function show_2(){
 
             content_cityname=CityArray[CityNumber].place;
+            content_state=CityArray[CityNumber].state;
+            content_country=CityArray[CityNumber].country;
+         
+            content_geo=content_state+",  "+content_country;
 
             content_details="";
-            content_details += "Wind chill: "+CityArray[CityNumber].windchill+" F"+"<br>"
+            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>";
+            content_details += "Wind chill: "+CityArray[CityNumber].windchill+" F"+"<br>";
             content_details += "Humidity: "+CityArray[CityNumber].humidity+" %"+"<br>";
+            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>";
+            
 
             content_wind="";
             content_wind += "Wind speed: "+CityArray[CityNumber].windSpeed+" mph"+"<br>";
@@ -118,26 +156,52 @@ $(document).ready(function(){
 
             content_todayhl=CityArray[CityNumber].day1high+CityArray[CityNumber].day1low;
             content_current=CityArray[CityNumber].current+"°";
-
-            content_forcast = "<p>Forcast</p>";
-            content_forcast +="<p align=center>" ;
-            content_forcast +="<table border='1' align=center><tr><td align=center>" + CityArray[CityNumber].day1 + "</td><td align=center>" + CityArray[CityNumber].day1high + "</td><td align=center>" + CityArray[CityNumber].day1low +"</td></tr>"
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day2 + "</td><td align=center>" + CityArray[CityNumber].day2high + "</td><td align=center>" + CityArray[CityNumber].day2low +"</td></tr>"  
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day3 + "</td><td align=center>" + CityArray[CityNumber].day3high + "</td><td align=center>" + CityArray[CityNumber].day3low +"</td></tr>"
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day4 + "</td><td align=center>" + CityArray[CityNumber].day4high + "</td><td align=center>" + CityArray[CityNumber].day4low +"</td></tr>"
-                                                               + "<tr><td align=center>" + CityArray[CityNumber].day5 + "</td><td align=center>" + CityArray[CityNumber].day5high + "</td><td align=center>" + CityArray[CityNumber].day5low +"</td></tr>"
-                                                               + "</table><p align=center>";
-
-
+         
 
             /*document.getElementById('display').innerHTML = city.zipcode;*/
             $("#display_cityname2").html(content_cityname);
+            $("#display_geo2").html(content_geo);
             $("#display_details2").html(content_details);
             $("#display_windpressure2").html(content_wind);
             $("#display_sunmoon2").html(content_sunandmoon);
             $("#display_todayhl2").html(content_todayhl);
             $("#display_current2").html(content_current);
-            $("#display_forecast2").html(content_forcast);
+         
+            $("#table2 td:eq(0)").html("Today");
+            $("#table2 td:eq(1)").html("Tomorrow");
+            $("#table2 td:eq(2)").html(CityArray[CityNumber].day3);
+            $("#table2 td:eq(3)").html(CityArray[CityNumber].day4);
+            $("#table2 td:eq(4)").html(CityArray[CityNumber].day5);
+        
+            $("#table2 td:eq(5)").html(CityArray[CityNumber].code1);
+            $("#table2 td:eq(6)").html(CityArray[CityNumber].code2);
+            $("#table2 td:eq(7)").html(CityArray[CityNumber].code3);
+            $("#table2 td:eq(8)").html(CityArray[CityNumber].code4);
+            $("#table2 td:eq(9)").html(CityArray[CityNumber].code5);
+        
+            $("#table2 td:eq(10)").html(CityArray[CityNumber].date1);
+            $("#table2 td:eq(11)").html(CityArray[CityNumber].date2);
+            $("#table2 td:eq(12)").html(CityArray[CityNumber].date3);
+            $("#table2 td:eq(13)").html(CityArray[CityNumber].date4);
+            $("#table2 td:eq(14)").html(CityArray[CityNumber].date5);
+        
+            $("#table2 td:eq(15)").html(CityArray[CityNumber].daytext1);
+            $("#table2 td:eq(16)").html(CityArray[CityNumber].daytext2);
+            $("#table2 td:eq(17)").html(CityArray[CityNumber].daytext3);
+            $("#table2 td:eq(18)").html(CityArray[CityNumber].daytext4);
+            $("#table2 td:eq(19)").html(CityArray[CityNumber].daytext5);
+        
+            $("#table2 td:eq(20)").html(CityArray[CityNumber].day1high);
+            $("#table2 td:eq(21)").html(CityArray[CityNumber].day2high);
+            $("#table2 td:eq(22)").html(CityArray[CityNumber].day3high);
+            $("#table2 td:eq(23)").html(CityArray[CityNumber].day4high);
+            $("#table2 td:eq(24)").html(CityArray[CityNumber].day5high);
+        
+            $("#table2 td:eq(25)").html(CityArray[CityNumber].day1low);
+            $("#table2 td:eq(26)").html(CityArray[CityNumber].day2low);
+            $("#table2 td:eq(27)").html(CityArray[CityNumber].day3low);
+            $("#table2 td:eq(28)").html(CityArray[CityNumber].day4low);
+            $("#table2 td:eq(29)").html(CityArray[CityNumber].day5low);
 
     };
 
@@ -172,11 +236,14 @@ $(document).ready(function(){
             getWind(data);
             getlocation(data);
             getdaytemp(data);
+            getVisibility(data);
             compare();
     };
 
     function getlocation(data){
             CityArray[CityNumber].place=data.query.results.channel.location.city;
+            CityArray[CityNumber].state=data.query.results.channel.location.region;
+            CityArray[CityNumber].country=data.query.results.channel.location.country;
     };
 
     function getdaytemp(data){
@@ -189,12 +256,25 @@ $(document).ready(function(){
         CityArray[CityNumber].day3temp=(Math.round(data.query.results.channel.item.forecast[2].high)+Math.round(data.query.results.channel.item.forecast[2].low))/2;
         CityArray[CityNumber].day4temp=(Math.round(data.query.results.channel.item.forecast[3].high)+Math.round(data.query.results.channel.item.forecast[3].low))/2;
         CityArray[CityNumber].day5temp=(Math.round(data.query.results.channel.item.forecast[4].high)+Math.round(data.query.results.channel.item.forecast[4].low))/2;
+        
         CityArray[CityNumber].day1=data.query.results.channel.item.forecast[0].day;
         CityArray[CityNumber].day2=data.query.results.channel.item.forecast[1].day;
         CityArray[CityNumber].day3=data.query.results.channel.item.forecast[2].day;
         CityArray[CityNumber].day4=data.query.results.channel.item.forecast[3].day;
         CityArray[CityNumber].day5=data.query.results.channel.item.forecast[4].day;
 
+        CityArray[CityNumber].date1=data.query.results.channel.item.forecast[0].date;
+        CityArray[CityNumber].date2=data.query.results.channel.item.forecast[1].date;
+        CityArray[CityNumber].date3=data.query.results.channel.item.forecast[2].date;
+        CityArray[CityNumber].date4=data.query.results.channel.item.forecast[3].date;
+        CityArray[CityNumber].date5=data.query.results.channel.item.forecast[4].date;
+        
+        CityArray[CityNumber].code1=data.query.results.channel.item.forecast[0].code;
+        CityArray[CityNumber].code2=data.query.results.channel.item.forecast[1].code;
+        CityArray[CityNumber].code3=data.query.results.channel.item.forecast[2].code;
+        CityArray[CityNumber].code4=data.query.results.channel.item.forecast[3].code;
+        CityArray[CityNumber].code5=data.query.results.channel.item.forecast[4].code;
+        
         CityArray[CityNumber].day1high=data.query.results.channel.item.forecast[0].high;
         CityArray[CityNumber].day1low=data.query.results.channel.item.forecast[0].low;
         CityArray[CityNumber].day2high=data.query.results.channel.item.forecast[1].high;
@@ -205,6 +285,13 @@ $(document).ready(function(){
         CityArray[CityNumber].day4low=data.query.results.channel.item.forecast[3].low;
         CityArray[CityNumber].day5high=data.query.results.channel.item.forecast[4].high;
         CityArray[CityNumber].day5low=data.query.results.channel.item.forecast[4].low;
+        
+        CityArray[CityNumber].daytext1=data.query.results.channel.item.forecast[0].text;
+        CityArray[CityNumber].daytext2=data.query.results.channel.item.forecast[1].text;
+        CityArray[CityNumber].daytext3=data.query.results.channel.item.forecast[2].text;
+        CityArray[CityNumber].daytext4=data.query.results.channel.item.forecast[3].text;
+        CityArray[CityNumber].daytext5=data.query.results.channel.item.forecast[4].text;
+        
     };
 
     function getWoeid(data){
@@ -232,7 +319,11 @@ $(document).ready(function(){
     function getHumidity(data){
             CityArray[CityNumber].humidity= data.query.results.channel.atmosphere.humidity;
     };
-
+    
+    function getVisibility(data){
+            CityArray[CityNumber].visibility= data.query.results.channel.atmosphere.visibility;
+    }
+    
     function getBarometer(data){
             pres= data.query.results.channel.atmosphere.rising;
             switch(pres)
