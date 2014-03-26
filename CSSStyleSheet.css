@@ -11,7 +11,7 @@ color: #fff;
 text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.1), 0 0 0 rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.5);
 }
 .city_left{
-        position:absolute;
+    position:absolute;
 	top:200px;
 	left:20px;
 	font-family:Georgia;
@@ -19,7 +19,7 @@ text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgb
 	color:black;
 }
 .city_right{
-        position:absolute;
+    position:absolute;
 	top:200px;
 	right:30px;
 	font-family:Georgia;
@@ -27,9 +27,31 @@ text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgb
 	color:black;
 }
 
+.geo_left{
+
+    position:absolute;
+	top:250px;
+	left:30px;
+	font-family:Georgia;
+	font-size:20px;
+	color:black;
+
+}
+
+.geo_right{
+
+	position:absolute;
+	top:250px;
+	right:30px;
+	font-family:Georgia;
+	font-size:20px;
+	color:black;
+
+}
+
 .current1{
 	position:absolute;
-	top:260px;
+	top:300px;
 	left:30px;
 	font-family:Georgia;
 	font-size:90px;
@@ -38,7 +60,7 @@ text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgb
 }
 .current2{
 	position:absolute;
-	top:260px;
+	top:300px;
 	right:30px;
 	font-family:Georgia;
 	font-size:90px;
@@ -49,7 +71,7 @@ text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgb
 	position:absolute;
 	top:500px;
 	left:15px;
-	
+
 
 border-radius: 25px 25px 25px 25px;
 -moz-border-radius: 25px 25px 25px 25px;
@@ -79,6 +101,18 @@ padding-top:100px;
 font-size:25px;
 float:left;
 	}
+
+.details_left{}
+
+.details_right{}
+
+.sunmoon_left{}
+
+.sunmoon_right{}
+
+.windpressure_left{}
+
+.windpressure_right{}
 
 .comparison{
 	position:absolute;
