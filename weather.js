@@ -13,33 +13,30 @@ $(document).ready(function(){
     $("#getit").click(function(){
         CityArray.push(new Object());
         CityNumber+=1;
+        insertandcheck();
         
         if(CityNumber==0){
-        insertandcheck();
         setTimeout(show_1,500);
         city_left=CityArray[CityNumber];
       }
       else if(CityNumber==1){
-        insertandcheck();
         setTimeout(show_2,500);
         city_right=CityArray[CityNumber];
       }
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
-              insertandcheck();
               setTimeout(show_1,500);
                $("#question").hide();
                city_left=CityArray[CityNumber];
           });
           $("#right").click(function(){
-              insertandcheck();
               setTimeout(show_2,500);
                $("#question").hide();
                city_right=CityArray[CityNumber];
           });
       }
-      
+      setTimeout(drawGraph,1000);
 
     })
    
@@ -450,6 +447,107 @@ $(document).ready(function(){
          else{
          $("#compare").hide();
          }
-   }  
+   };
+    
+    function drawGraph(){	
+		// define dimensions of graph
+		var iDiv = document.createElement('div');
+        iDiv.id = "block"+CityNumber;
+        iDiv.className = "block";
+        document.getElementsByTagName('body')[0].appendChild(iDiv);
+
+		var m = [80, 80, 80, 80]; // margins
+		var w = 1000 - m[1] - m[3]; // width
+		var h = 400 - m[0] - m[2]; // height
+		
+		D1=CityArray[CityNumber].day1;
+		D2=CityArray[CityNumber].day2;
+		D3=CityArray[CityNumber].day3;
+		D4=CityArray[CityNumber].day4;
+		D5=CityArray[CityNumber].day5;
+		T1=CityArray[CityNumber].day1temp;
+		T2=CityArray[CityNumber].day2temp;
+		T3=CityArray[CityNumber].day3temp;
+		T4=CityArray[CityNumber].day4temp;
+		T5=CityArray[CityNumber].day5temp;
+		// create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
+		var data = [{"Day":D1,"Temp":T1},{"Day":D2,"Temp":T2},{"Day":D3,"Temp":T3},{"Day":D4,"Temp":T4},{"Day":D5,"Temp":T5}];
+        
+		// X scale will fit all values from data[] within pixels 0-w
+		var x = d3.scale.ordinal().domain([D1,D2,D3,D4,D5]).rangePoints([0, w]);
+		// Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+		var y = d3.scale.linear().range([h, 0]);
+		
+		/*y.domain([0, d3.max(data, function(d) {
+        return d.Temp;
+        })]);*/
+        y.domain([20,120]);
+			// automatically determining max range can work something like this
+			// var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
+ 
+		// create a line function that can convert data[] into x and y points
+		var line = d3.svg.line()
+			// assign the X function to plot our line as we wish
+			.x(function(d) { 
+				return x(d.Day); })
+			.y(function(d) { 
+				return y(d.Temp);});
+			// Add an SVG element with the desired dimensions and margin.
+			var graph = d3.select("#block"+CityNumber).append("svg:svg")
+			      .attr("width", w + m[1] + m[3])
+			      .attr("height", h + m[0] + m[2])
+			    .append("svg:g")
+			      .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+                
+                // create yAxis
+                var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
+                // Add the x-axis.
+
+                // create left yAxis
+                var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+                // Add the y-axis to the left
+                
+                graph.append("svg:g")
+			      .attr("class", "x axis")
+			      .attr("transform", "translate(0," + h + ")")
+			      .call(xAxis);
+                
+                graph.append("svg:g")
+			      .attr("class", "y axis")
+			      .attr("transform", "translate(-25,0)")
+			      .call(yAxisLeft)
+                  .append("text")
+			      .attr("transform", "rotate(-90)")
+			      .attr("y", 6)
+                  .attr("dy", ".71em")
+			      .style("text-anchor","end")
+			      .text("Temperature (ºF)");;
+
+                // Add the line by appending an svg:path element with the data line we created above
+                // do this AFTER the axes above so that the line is above the tick-lines
+                means=d3.mean(data, function(d) {        
+                    return d.Temp;
+                });
+
+                    function xx(d) { return x(d.Day); };
+                    function yy(d) { return y(d.Temp); };
+
+                        graph
+                        .selectAll("circle")
+                        .data(data)
+                        .enter().append("circle")
+                        .attr("fill", "steelblue")
+                        .attr("r", 5)
+                        .attr("cx", xx)
+                        .attr("cy", yy)
+
+                        graph.append("text")
+                        .attr("transform", "translate(" + 0.9*w + "," + means + ")")
+                        .attr("x", 3)
+                        .attr("dy", ".35em")
+                        .text(CityArray[CityNumber].place);
+        
+                graph.append("svg:path").attr("d", line(data));
+  		};
     
 })
