@@ -28,7 +28,11 @@ else if(city_1.zipcode != cities(cities.length-1))
         insertandcheck_1();
         setTimeout(show_1,500);
 <<<<<<< HEAD
+<<<<<<< HEAD
         counter=2;
+=======
+        city_left=CityArray[CityNumber];
+>>>>>>> FETCH_HEAD
 =======
         city_left=CityArray[CityNumber];
 >>>>>>> FETCH_HEAD
@@ -37,7 +41,11 @@ else if(city_1.zipcode != cities(cities.length-1))
         insertandcheck_2();
         setTimeout(show_2,500);
 <<<<<<< HEAD
+<<<<<<< HEAD
           counter=3;
+=======
+        city_right=CityArray[CityNumber];
+>>>>>>> FETCH_HEAD
 =======
         city_right=CityArray[CityNumber];
 >>>>>>> FETCH_HEAD
@@ -58,8 +66,11 @@ else if(city_1.zipcode != cities(cities.length-1))
           });
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
   });
 =======
+=======
+>>>>>>> FETCH_HEAD
       
 
     })
@@ -506,16 +517,22 @@ function getWind_2(data){
 
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     function compare(){
 
 comparison="";
 	
 =======
+=======
+>>>>>>> FETCH_HEAD
   function compare(){
         comparison="";
 	  city_1=city_left;;
 	  city_2=city_right;
 	  
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
 	if (city_1.day1temp<city_2.day1temp){
 	   differenceday1=city_2.day1temp-city_1.day1temp;
@@ -526,6 +543,9 @@ comparison="";
         comparison += city_1.place+" is " + differenceday1 + " degrees warmer than " +city_2.place+" today. <br>";
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> FETCH_HEAD
     
     if (city_1.day2temp<city_2.day2temp){
 	   differenceday2=city_2.day2temp-city_1.day2temp;
@@ -535,6 +555,7 @@ comparison="";
     	differenceday2=city_1.day2temp-city_2.day2temp;
         comparison += city_1.place+" is " + differenceday2 + " degrees warmer than " +city_2.place+" tomorrow. <br>";
     }
+<<<<<<< HEAD
     
     if (city_1.day3temp<city_2.day3temp){
 	   differenceday3=city_2.day3temp-city_1.day3temp;
@@ -606,6 +627,36 @@ comparison="";
         comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
     }
     
+=======
+    
+    if (city_1.day3temp<city_2.day3temp){
+	   differenceday3=city_2.day3temp-city_1.day3temp;
+       comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + "<br>";
+    }
+    else{
+    	differenceday3=city_1.day3temp-city_2.day3temp;
+        comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +"<br>";
+    }
+
+    if (city_1.day4temp<city_2.day4temp){
+	   differenceday4=city_2.day4temp-city_1.day4temp;
+       comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+"<br>";
+    }
+    else{
+    	differenceday4=city_1.day4temp-city_2.day4temp;
+        comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+"<br>";
+    }
+
+    if (city_1.day5temp<city_2.day5temp){
+	   differenceday5=city_2.day5temp-city_1.day5temp;
+       comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+    else{
+    	differenceday5=city_1.day5temp-city_2.day5temp;
+        comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+    
+>>>>>>> FETCH_HEAD
         if(CityNumber >=1){
          $("#compare").html(comparison);
          }
