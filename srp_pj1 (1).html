@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Project</title>
-    
+ 
+<script src="http://d3js.org/d3.v3.js"></script>     
 <script src="jquery-2.1.0.min.js"></script>
 <script src="weather.js"></script>
 <link rel="stylesheet" type="text/css" href="CSSStyleSheet.css">
@@ -44,7 +45,7 @@
     
 </div>
   
-<div class="content">
+<div id="container" class="content">
     <div class="content_left">
         
         <div class="city" id="display_cityname1"></div>
@@ -171,6 +172,8 @@
     </div>
     
     <div id="compare" class="comparison"></div>
+    
+    <div class="graph"></div>
    
 </div>
 
