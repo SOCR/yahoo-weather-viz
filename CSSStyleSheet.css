@@ -200,8 +200,7 @@ td{
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     padding-top:100px;
-    border:2px solid;
-    border-color: red;
+    border: 0px solid;
 }
 
 .graph{
