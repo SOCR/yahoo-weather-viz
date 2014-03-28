@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Project</title>
- 
-<script src="http://d3js.org/d3.v3.js"></script>    
+    
 <script src="jquery-2.1.0.min.js"></script>
 <script src="weather.js"></script>
 <link rel="stylesheet" type="text/css" href="CSSStyleSheet.css">
@@ -34,43 +33,147 @@
 <input id="zipcode" class="input-medium search-query" style="width:168px;" type="text" value="Please type in the zipcode" />
 <button class="btn btn-small btn-primary disabled" type="button" id='getit'>Get Weather</button>
 </form> 
+    
 <div id="question"  align="center" >
-<p><font color="#485c99" size="+1">Which side of data do you want to replace?</font></p>
-<div class="btn-group">
-  <button class="btn" id="left">Left</button>
-  <button class="btn" id="right">Right</button>
+    <p><font color="#485c99" size="+1">Which side of data do you want to replace?</font></p>
+    
+    <div class="btn-group">
+      <button class="btn" id="left">Left</button>
+      <button class="btn" id="right">Right</button>
+    </div>
+    
 </div>
+  
+<div class="content">
+    <div class="content_left">
+        
+        <div class="city" id="display_cityname1"></div>
+        <div class="geo" id="display_geo1"></div>
+        <div class="current" id="display_current1"></div>
+        <div id="display_forecast1" class="forecast">
+            <table id="table1">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="details" id="display_details1"></div>
+        <div class="sunmoon" id="display_sunmoon1"></div>
+        <div class="windpressure" id="display_windpressure1"></div>
+        
+    </div>
+    
+    <div class="content_right">
+        
+        <div class="city" id="display_cityname2"></div>
+        <div class="geo" id="display_geo2"></div>
+        <div class="current" id="display_current2"></div>
+        <div id="display_forecast2" class="forecast">
+            <table id="table2">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="details" id="display_details2"></div>
+        <div class="sunmoon" id="display_sunmoon2"></div>
+        <div class="windpressure" id="display_windpressure2"></div>
+    </div>
+    
+    <div id="compare" class="comparison"></div>
+   
 </div>
 
-<div class="city_left" id="display_cityname1"></div>
-
-<div class="city_right" id="display_cityname2"></div>
-
-<div class="geo_left" id="display_geo1"></div>
-
-<div class="geo_right" id="display_geo2"></div>
-
-<div class="current1" id="display_current1"></div>
-
-<div class="current2" id="display_current2"></div>
-
-<div id="display_forecast1" class="forecast1"></div>
-
-<div id="display_forecast2" class="forecast2"></div>
-
-<div class="details_left" id="display_details1"></div>
-
-<div class="details_right" id="display_details2"></div>
-
-<div class="sunmoon_left" id="display_sunmoon1"></div>
-
-<div class="sunmoon_right" id="display_sunmoon2"></div>
-
-<div class="windpressure_left" id="display_windpressure1"></div>
-
-<div class="windpressure_right" id="display_windpressure2"></div>
-
-<div id="compare" class="comparison"></div>
     
     
     
