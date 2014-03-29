@@ -549,7 +549,7 @@ $(document).ready(function(){
                         .attr("transform", "translate(" + w + " , " + ((CityNumber+1)*15) + ")")
                         .attr("x", 3)
                         .attr("dy", ".35em")
-                        .style("stroke",colors[CityNumber])
+                        .style("fill",colors[CityNumber])
                         .text("• "+CityArray[CityNumber].place);
         
                 graph.append("svg:path").attr("d", line(data))
