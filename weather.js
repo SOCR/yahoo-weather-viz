@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
     var CityArray = new Array();
     var CityNumber = -1;
@@ -15,31 +16,30 @@ $(document).ready(function(){
         insertandcheck();
         
         if(CityNumber==0){
-        	setTimeout(show_1,500);
-		city_left=CityArray[CityNumber];
-      	}
-      	
-      	else if(CityNumber==1){
-        	setTimeout(show_2,500);
-        	city_right=CityArray[CityNumber];
-      	}
-      	else if(CityNumber>=2){
-          	$("#question").show();
-          	
-        	 $("#left").click(function(){
-              	setTimeout(show_1,500);
-        	 $("#question").hide();
-        	 city_left=CityArray[CityNumber];
-		 });
-		 
-         	$("#right").click(function(){
-              		setTimeout(show_2,500);
-        		 $("#question").hide();
-               		city_right=CityArray[CityNumber];
-          	});
-	 }
-	 
-      	setTimeout(drawGraph,1000);
+        setTimeout(show_1,500);
+        city_left=CityArray[CityNumber];
+      }
+      else if(CityNumber==1){
+        setTimeout(show_2,500);
+        city_right=CityArray[CityNumber];
+        setTimeout(compare,500);
+      }
+      else if(CityNumber>=2){
+          $("#question").show();
+          $("#left").click(function(){
+              setTimeout(show_1,500);
+               $("#question").hide();
+               city_left=CityArray[CityNumber];
+               setTimeout(compare,500);
+          });
+          $("#right").click(function(){
+              setTimeout(show_2,500);
+               $("#question").hide();
+               city_right=CityArray[CityNumber];
+               setTimeout(compare,500);
+          });
+      }
+      setTimeout(drawGraph,1000);
 
     })
    
@@ -51,11 +51,11 @@ $(document).ready(function(){
 		      alert("Please type in the valid zipcode!");
 		      return false;
 	       }
-           	else{
-	        	CityArray[CityNumber].zipcode = zipcodeValue;
-                	getWoeidNumber(CityArray[CityNumber].zipcode);
-            	}
-     };
+           else{
+	           CityArray[CityNumber].zipcode = zipcodeValue;
+                getWoeidNumber(CityArray[CityNumber].zipcode);
+            }
+        };
     
     function show_1(){
 
@@ -237,7 +237,7 @@ $(document).ready(function(){
             getlocation(data);
             getdaytemp(data);
             getVisibility(data);
-            compare();
+            
     };
 
     function getlocation(data){
@@ -400,68 +400,70 @@ $(document).ready(function(){
 	  city_2=city_right;
 	  
 	if (city_1.day1temp<city_2.day1temp){
-	   	differenceday1=city_2.day1temp-city_1.day1temp;
-       		comparison += city_1.place+" is " + differenceday1 + " degrees colder than " +city_2.place+" today. <br>";
-	 }
-    	else{
-    		differenceday1=city_1.day1temp-city_2.day1temp;
-        	comparison += city_1.place+" is " + differenceday1 + " degrees warmer than " +city_2.place+" today. <br>";
-    	}
+	   differenceday1=city_2.day1temp-city_1.day1temp;
+       comparison += city_1.place+" is " + differenceday1 + " degrees colder than " +city_2.place+" today. <br>";
+    }
+    else{
+    	differenceday1=city_1.day1temp-city_2.day1temp;
+        comparison += city_1.place+" is " + differenceday1 + " degrees warmer than " +city_2.place+" today. <br>";
+    }
     
-    	if (city_1.day2temp<city_2.day2temp){
-	   	differenceday2=city_2.day2temp-city_1.day2temp;
-       		comparison += city_1.place+" is " + differenceday2 + " degrees colder than " +city_2.place+" tomorrow. <br>";
-    	}
-    	else{
-    		differenceday2=city_1.day2temp-city_2.day2temp;
-        	comparison += city_1.place+" is " + differenceday2 + " degrees warmer than " +city_2.place+" tomorrow. <br>";
-    	}
+    if (city_1.day2temp<city_2.day2temp){
+	   differenceday2=city_2.day2temp-city_1.day2temp;
+       comparison += city_1.place+" is " + differenceday2 + " degrees colder than " +city_2.place+" tomorrow. <br>";
+    }
+    else{
+    	differenceday2=city_1.day2temp-city_2.day2temp;
+        comparison += city_1.place+" is " + differenceday2 + " degrees warmer than " +city_2.place+" tomorrow. <br>";
+    }
     
-	if (city_1.day3temp<city_2.day3temp){
-	   	differenceday3=city_2.day3temp-city_1.day3temp;
-       		comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + "<br>";
-    	}
-    	else{
-    		differenceday3=city_1.day3temp-city_2.day3temp;
-        	comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +"<br>";
-    	}
+    if (city_1.day3temp<city_2.day3temp){
+	   differenceday3=city_2.day3temp-city_1.day3temp;
+       comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + "<br>";
+    }
+    else{
+    	differenceday3=city_1.day3temp-city_2.day3temp;
+        comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +"<br>";
+    }
 
-    	if (city_1.day4temp<city_2.day4temp){
-	   	differenceday4=city_2.day4temp-city_1.day4temp;
-       		comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+"<br>";
-    	}
-    	else{
-    		differenceday4=city_1.day4temp-city_2.day4temp;
-        	comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+"<br>";
-    	}
+    if (city_1.day4temp<city_2.day4temp){
+	   differenceday4=city_2.day4temp-city_1.day4temp;
+       comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+"<br>";
+    }
+    else{
+    	differenceday4=city_1.day4temp-city_2.day4temp;
+        comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+"<br>";
+    }
 
-    	if (city_1.day5temp<city_2.day5temp){
-	   	differenceday5=city_2.day5temp-city_1.day5temp;
-       		comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+"<br>";
-    	}
-    	else{
-    		differenceday5=city_1.day5temp-city_2.day5temp;
-        	comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
-    	}
+    if (city_1.day5temp<city_2.day5temp){
+	   differenceday5=city_2.day5temp-city_1.day5temp;
+       comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
+    else{
+    	differenceday5=city_1.day5temp-city_2.day5temp;
+        comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
+    }
     
         if(CityNumber >=1){
-         	$("#compare").html(comparison);
-        }
-        else{
-         	$("#compare").hide();
-        }
+         $("#compare").html(comparison);
+         }
+         else{
+         $("#compare").hide();
+         }
    };
     
     function drawGraph(){	
-			// define dimensions of graph
+		// define dimensions of graph
 		var iDiv = document.createElement('div');
-	        iDiv.id = "block"+CityNumber;
-	        iDiv.className = "block";
-	        document.getElementsByTagName('body')[0].appendChild(iDiv);
+        iDiv.id = "block"+CityNumber;
+        iDiv.className = "block";
+        document.getElementsByTagName('body')[0].appendChild(iDiv);
 
 		var m = [80, 80, 80, 80]; // margins
 		var w = 1000 - m[1] - m[3]; // width
 		var h = 400 - m[0] - m[2]; // height
+		var colors=["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", "#e377c2", "#f7b6d2, #7f7f7f, #c7c7c7, #bcbd22, #dbdb8d, #17becf, #9edae5"];
+		
 		
 		D1=CityArray[CityNumber].day1;
 		D2=CityArray[CityNumber].day2;
@@ -481,17 +483,22 @@ $(document).ready(function(){
 		// Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
 		var y = d3.scale.linear().range([h, 0]);
 		
-		y.domain([20,120]);
+		/*y.domain([0, d3.max(data, function(d) {
+        return d.Temp;
+        })]);*/
+        y.domain([20,120]);
 			// automatically determining max range can work something like this
 			// var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
  
 		// create a line function that can convert data[] into x and y points
 		var line = d3.svg.line()
 			// assign the X function to plot our line as we wish
-		.x(function(d) { return x(d.Day); })
-		.y(function(d) { return y(d.Temp);});
+			.x(function(d) { 
+				return x(d.Day); })
+			.y(function(d) { 
+				return y(d.Temp);});
 			// Add an SVG element with the desired dimensions and margin.
-		var graph = d3.select("#block"+CityNumber).append("svg:svg")
+			var graph = d3.select("#block"+CityNumber).append("svg:svg")
 			      .attr("width", w + m[1] + m[3])
 			      .attr("height", h + m[0] + m[2])
 			    .append("svg:g")
@@ -524,28 +531,31 @@ $(document).ready(function(){
                 // Add the line by appending an svg:path element with the data line we created above
                 // do this AFTER the axes above so that the line is above the tick-lines
                 means=d3.mean(data, function(d) {        
-                    return d.Temp;
-                });
-
-                function xx(d) { return x(d.Day); };
-                function yy(d) { return y(d.Temp); };
-
-                graph
-                    .selectAll("circle")
-                    .data(data)
-                    .enter().append("circle")
-                    .attr("fill", "steelblue")
-                    .attr("r", 5)
-                    .attr("cx", xx)
-                    .attr("cy", yy)
-
-                graph.append("text")
-                    .attr("transform", "translate(" + 0.9*w + "," + means + ")")
-                    .attr("x", 3)
-                    .attr("dy", ".35em")
-                    .text(CityArray[CityNumber].place);
+        return d.Temp;
+        });
         
-                graph.append("svg:path").attr("d", line(data));
-  	};
+
+                    function xx(d) { return x(d.Day); };
+                    function yy(d) { return y(d.Temp); };
+
+                        graph
+                        .selectAll("circle")
+                        .data(data)
+                        .enter().append("circle")
+                        .attr("r", 5)
+                        .attr("cx", xx)
+                        .attr("cy", yy)
+                        .style("fill",colors[CityNumber]);
+
+                        graph.append("text")
+                        .attr("transform", "translate(" + w + " , " + (h-(CityNumber+1)*15) + ")")
+                        .attr("x", 3)
+                        .attr("dy", ".35em")
+                        .style("stroke",colors[CityNumber])
+                        .text(CityArray[CityNumber].place);
+        
+                graph.append("svg:path").attr("d", line(data))
+                .style("stroke",colors[CityNumber]);
+  		};
     
 })
