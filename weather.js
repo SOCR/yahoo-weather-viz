@@ -1,5 +1,4 @@
 
-
 $(document).ready(function(){
     var CityArray = new Array();
     var CityNumber = -1;
@@ -548,11 +547,11 @@ $(document).ready(function(){
                         .style("fill",colors[CityNumber]);
 
                         graph.append("text")
-                        .attr("transform", "translate(" + w + " , " + (h-(CityNumber+1)*15) + ")")
+                        .attr("transform", "translate(" + w + " , " + ((CityNumber+1)*15) + ")")
                         .attr("x", 3)
                         .attr("dy", ".35em")
                         .style("stroke",colors[CityNumber])
-                        .text(CityArray[CityNumber].place);
+                        .text("• "+CityArray[CityNumber].place);
         
                 graph.append("svg:path").attr("d", line(data))
                 .style("stroke",colors[CityNumber]);
