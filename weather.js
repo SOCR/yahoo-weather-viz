@@ -81,7 +81,7 @@ $(document).ready(function(){
         var windimg = document.createElement('div');
         windimg.id="windimg2";
         document.getElementsByTagName('body')[0].appendChild(windimg);
-        $("#windimg2").append('<img src="http://upload.wikimedia.org/wikipedia/commons/f/f7/Anemometer%2C_robinsonsk%2C_Nordisk_familjebok.png" height="280" width="200">')
+        $("#windimg2").append('<img src="http://upload.wikimedia.org/wikipedia/commons/f/f7/Anemometer%2C_robinsonsk%2C_Nordisk_familjebok.png" height="190" width="160">')
         
         var sunmoonimg = document.createElement('div');
         sunmoonimg.id="sunmoonimg2";
@@ -98,20 +98,20 @@ $(document).ready(function(){
             content_geo=content_state+",  "+content_country;
 
             content_details="";
-            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>"+"<br>";
-            content_details += "Wind chill: "+CityArray[CityNumber].windchill+"F    ";
-            content_details += "Humidity: "+CityArray[CityNumber].humidity+"%    ";
-            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>"+"<br>";
+            content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
+            content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
+            content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
+            content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
             content_details += CityArray[CityNumber].description;
 
             content_wind="";
-            content_wind += "Wind speed: "+CityArray[CityNumber].windSpeed+" mph"+"<br>";
-            content_wind += "Wind Direction: "+CityArray[CityNumber].windDir+"<br>";
-            content_wind += "Barometer: "+CityArray[CityNumber].barometer+"<br>";
+            content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
+            content_wind += "Wind Direction: "+'<font color="#1f77b4">'+CityArray[CityNumber].windDir+'</font>'+"<br>";
+            content_wind += "Barometer: "+'<font color="#1f77b4">'+CityArray[CityNumber].barometer+'</font>'+"<br>";
         
             content_sunandmoon="";
-            content_sunandmoon += "Sunrise: "+CityArray[CityNumber].sunrise+"<br>";
-            content_sunandmoon += "Sunset: "+CityArray[CityNumber].sunset+"<br>";
+            content_sunandmoon += "Sunrise: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunrise+'</font>'+"<br>";
+            content_sunandmoon += "Sunset: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunset+'</font>'+"<br>";
 
             content_todayhl=CityArray[CityNumber].day1high+CityArray[CityNumber].day1low;
             content_current=CityArray[CityNumber].current+"°";            
@@ -173,23 +173,20 @@ $(document).ready(function(){
             content_geo=content_state+",  "+content_country;
 
             content_details="";
-            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>"+"<br>";
-            content_details += "Wind chill: "+CityArray[CityNumber].windchill+"F    ";
-            content_details += "Humidity: "+CityArray[CityNumber].humidity+"%    ";
-            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>"+"<br>";
+            content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
+            content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
+            content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
+            content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
             content_details += CityArray[CityNumber].description;
 
-
-
             content_wind="";
-            content_wind += "Wind speed: "+CityArray[CityNumber].windSpeed+" mph"+"<br>";
-            content_wind += "Wind Direction: "+CityArray[CityNumber].windDir+"<br>";
-            content_wind += "Barometer: "+CityArray[CityNumber].barometer+"<br>";
-            
-
+            content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
+            content_wind += "Wind Direction: "+'<font color="#1f77b4">'+CityArray[CityNumber].windDir+'</font>'+"<br>";
+            content_wind += "Barometer: "+'<font color="#1f77b4">'+CityArray[CityNumber].barometer+'</font>'+"<br>";
+        
             content_sunandmoon="";
-            content_sunandmoon += "Sunrise: "+CityArray[CityNumber].sunrise+"<br>";
-            content_sunandmoon += "Sunset: "+CityArray[CityNumber].sunset+"<br>";
+            content_sunandmoon += "Sunrise: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunrise+'</font>'+"<br>";
+            content_sunandmoon += "Sunset: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunset+'</font>'+"<br>";
             
             content_todayhl=CityArray[CityNumber].day1high+CityArray[CityNumber].day1low;
             content_current=CityArray[CityNumber].current+"°";
@@ -498,29 +495,29 @@ $(document).ready(function(){
     
     if (city_1.day3temp<city_2.day3temp){
        differenceday3=city_2.day3temp-city_1.day3temp;
-       comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + "<br>";
+       comparison += city_1.place+" is " + differenceday3 + " degrees colder than " +city_2.place+" on " + city_1.day3 + ". <br>";
     }
     else{
         differenceday3=city_1.day3temp-city_2.day3temp;
-        comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +"<br>";
+        comparison += city_1.place+" is " + differenceday3 + " degrees warmer than " +city_2.place+" on " + city_1.day3 +". <br>";
     }
 
     if (city_1.day4temp<city_2.day4temp){
        differenceday4=city_2.day4temp-city_1.day4temp;
-       comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+"<br>";
+       comparison += city_1.place+" is " + differenceday4 + " degrees colder than " +city_2.place +" on " + city_1.day4+". <br>";
     }
     else{
         differenceday4=city_1.day4temp-city_2.day4temp;
-        comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+"<br>";
+        comparison += city_1.place+" is " + differenceday4 + " degrees warmer than " +city_2.place+" on " + city_1.day4+". <br>";
     }
 
     if (city_1.day5temp<city_2.day5temp){
        differenceday5=city_2.day5temp-city_1.day5temp;
-       comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+"<br>";
+       comparison += city_1.place+" is " + differenceday5 + " degrees colder than " +city_2.place+" on " + city_1.day5+". <br>";
     }
     else{
         differenceday5=city_1.day5temp-city_2.day5temp;
-        comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+"<br>";
+        comparison += city_1.place+" is " + differenceday5 + " degrees warmer than " +city_2.place+" on " + city_1.day5+". <br>";
     }
     
         if(CityNumber >=1){
