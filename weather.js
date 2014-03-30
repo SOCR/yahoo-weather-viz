@@ -7,37 +7,47 @@ $(document).ready(function(){
     })
     
     $("#question").hide();
+    $(".progress_bar").hide();
     
     $("#getit").click(function(){
         CityArray.push(new Object());
         CityNumber+=1;
         insertandcheck();
-        
+         
         if(CityNumber==0){
-        setTimeout(show_1,500);
+        $(".progress_bar").show();
+        setTimeout(show_1,1200);
         city_left=CityArray[CityNumber];
-      }
-      else if(CityNumber==1){
-        setTimeout(show_2,500);
-        city_right=CityArray[CityNumber];
-        setTimeout(compare,500);
-      }
+        showImage_1();
+        }
+        
+        else if(CityNumber==1){
+            $(".progress_bar").show();
+            setTimeout(show_2,1200);
+            city_right=CityArray[CityNumber];
+            setTimeout(compare,500);
+            showImage_2();
+        
+        }
+        
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
-              setTimeout(show_1,500);
+              $(".progress_bar").show();
+              setTimeout(show_1,1200);
                $("#question").hide();
                city_left=CityArray[CityNumber];
                setTimeout(compare,500);
           });
           $("#right").click(function(){
-              setTimeout(show_2,500);
+              $(".progress_bar").show();
+              setTimeout(show_2,1200);
                $("#question").hide();
                city_right=CityArray[CityNumber];
                setTimeout(compare,500);
           });
       }
-      setTimeout(drawGraph,1000);
+        setTimeout(function(){drawGraph();$(".progress_bar").hide();},500);
 
     })
    
@@ -51,12 +61,36 @@ $(document).ready(function(){
            }
            else{
                CityArray[CityNumber].zipcode = zipcodeValue;
-                getWoeidNumber(CityArray[CityNumber].zipcode);
+               getWoeidNumber(CityArray[CityNumber].zipcode);
             }
         };
     
+    function showImage_1(){
+        var windimg = document.createElement('div');
+        windimg.id="windimg1";
+        document.getElementsByTagName('body')[0].appendChild(windimg);
+        $("#windimg1").append('<img src="http://bestclipartblog.com/clipart-pics/tornado-clip-art-9.png" height="280" width="200">')
+        
+        var sunmoonimg = document.createElement('div');
+        sunmoonimg.id="sunmoonimg1";
+        document.getElementsByTagName('body')[0].appendChild(sunmoonimg);
+        $("#sunmoonimg1").append('<img src="http://aspgweather.com/cumulus/sunrise.png">')
+    }
+    
+    function showImage_2(){
+        var windimg = document.createElement('div');
+        windimg.id="windimg2";
+        document.getElementsByTagName('body')[0].appendChild(windimg);
+        $("#windimg2").append('<img src="http://upload.wikimedia.org/wikipedia/commons/f/f7/Anemometer%2C_robinsonsk%2C_Nordisk_familjebok.png" height="280" width="200">')
+        
+        var sunmoonimg = document.createElement('div');
+        sunmoonimg.id="sunmoonimg2";
+        document.getElementsByTagName('body')[0].appendChild(sunmoonimg);
+        $("#sunmoonimg2").append('<img src="http://aspgweather.com/cumulus/sunset_icon.png">')
+    }
+    
     function show_1(){
-
+            $("#container").show();
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
@@ -64,17 +98,17 @@ $(document).ready(function(){
             content_geo=content_state+",  "+content_country;
 
             content_details="";
-            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>";
-            content_details += "Wind chill: "+CityArray[CityNumber].windchill+" F"+"<br>";
-            content_details += "Humidity: "+CityArray[CityNumber].humidity+" %"+"<br>";
-            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>";
+            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>"+"<br>";
+            content_details += "Wind chill: "+CityArray[CityNumber].windchill+"F    ";
+            content_details += "Humidity: "+CityArray[CityNumber].humidity+"%    ";
+            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>"+"<br>";
             content_details += CityArray[CityNumber].description;
 
             content_wind="";
             content_wind += "Wind speed: "+CityArray[CityNumber].windSpeed+" mph"+"<br>";
             content_wind += "Wind Direction: "+CityArray[CityNumber].windDir+"<br>";
             content_wind += "Barometer: "+CityArray[CityNumber].barometer+"<br>";
-
+        
             content_sunandmoon="";
             content_sunandmoon += "Sunrise: "+CityArray[CityNumber].sunrise+"<br>";
             content_sunandmoon += "Sunset: "+CityArray[CityNumber].sunset+"<br>";
@@ -87,6 +121,7 @@ $(document).ready(function(){
             $("#display_details1").html(content_details);
             $("#display_windpressure1").html(content_wind);
             $("#display_sunmoon1").html(content_sunandmoon);
+            
             $("#display_todayhl1").html(content_todayhl);
             $("#display_current1").html(content_current);
             
@@ -130,7 +165,7 @@ $(document).ready(function(){
     };
     
      function show_2(){
-
+            $("#container").show();
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
@@ -138,10 +173,10 @@ $(document).ready(function(){
             content_geo=content_state+",  "+content_country;
 
             content_details="";
-            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>";
-            content_details += "Wind chill: "+CityArray[CityNumber].windchill+" F"+"<br>";
-            content_details += "Humidity: "+CityArray[CityNumber].humidity+" %"+"<br>";
-            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>";
+            content_details += "Feels like "+CityArray[CityNumber].current+"°F"+"<br>"+"<br>";
+            content_details += "Wind chill: "+CityArray[CityNumber].windchill+"F    ";
+            content_details += "Humidity: "+CityArray[CityNumber].humidity+"%    ";
+            content_details += "Visibility: "+CityArray[CityNumber].visibility+" mile"+"<br>"+"<br>";
             content_details += CityArray[CityNumber].description;
 
 
@@ -150,11 +185,12 @@ $(document).ready(function(){
             content_wind += "Wind speed: "+CityArray[CityNumber].windSpeed+" mph"+"<br>";
             content_wind += "Wind Direction: "+CityArray[CityNumber].windDir+"<br>";
             content_wind += "Barometer: "+CityArray[CityNumber].barometer+"<br>";
+            
 
             content_sunandmoon="";
             content_sunandmoon += "Sunrise: "+CityArray[CityNumber].sunrise+"<br>";
             content_sunandmoon += "Sunset: "+CityArray[CityNumber].sunset+"<br>";
-
+            
             content_todayhl=CityArray[CityNumber].day1high+CityArray[CityNumber].day1low;
             content_current=CityArray[CityNumber].current+"°";
 
@@ -267,12 +303,12 @@ $(document).ready(function(){
     };
 
     function getnewdata(data){
-           getdescrciption(data);
+           getdescription(data);
            geticon(data);
            getforecast_text(data);
     };    
 
-    function getdescrciption(data){
+    function getdescription(data){
            CityArray[CityNumber].description=data.query.results.forecast.txt_forecast.forecastday[0].fcttext;
     };
 
@@ -340,7 +376,7 @@ $(document).ready(function(){
     function getWoeid(data){
             //alert('Hi');
             CityArray[CityNumber].woeid= data.query.results.place[0].woeid;
-              getWeather(CityArray[CityNumber].woeid);
+            getWeather(CityArray[CityNumber].woeid);
     };
 
     function getWindChill(data){
