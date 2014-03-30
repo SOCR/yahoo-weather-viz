@@ -1,114 +1,192 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-<script type = 'text/javascript' src='weatherproj.js'></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js">
-
-    </script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Weather Project</title>
+ 
+<script src="http://d3js.org/d3.v3.js"></script>     
+<script src="jquery-2.1.0.min.js"></script>
+<script src="weather.js"></script>
+<link rel="stylesheet" type="text/css" href="CSSStyleSheet.css">
+<link href="https://rawgithub.com/SOCRedu/pubmed-vis-test-project/gh-pages/css/bootstrap.css" rel="stylesheet">
 
+</head>
 
+<body>
+    
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">SOCR Weather</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="http://www.socr.ucla.edu">SOCR</a></li>
+      <li><a href="http://www.ucla.edu">UCLA</a></li>
+    </ul>
+  </div>
+</div>
+    
+<div class="row-fluid">
+     <h1 class="wea"style="Courier">SOCR WEATHER</h1>
+</div>
+    
+<form class="form-search">
+<input id="zipcode" class="input-medium search-query" style="width:168px;" type="text" value="Please type in the zipcode" />
+<button class="btn btn-small btn-primary disabled" type="button" id='getit'>Get Weather</button>
+</form> 
 
-
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<div class="progress_bar">
+    <div class="progress progress-striped active">
+        <div class="bar" style="width: 30%;"></div>
+    </div>
+</div>
+    
+<div id="question"  align="center" >
+    <p><font color="#485c99" size="+1">Which side of data do you want to replace?</font></p>
+    
+    <div class="btn-group">
+      <button class="btn" id="left">Left</button>
+      <button class="btn" id="right">Right</button>
+    </div>
+    
+</div>
   
+<div id="container" class="content" hidden="hidden">
+    <div class="content_left">
+        
+        <div class="city" id="display_cityname1"></div>
+        <div class="geo" id="display_geo1"></div>
+        <div class="current" id="display_current1"></div>
+        <div id="display_forecast1" class="forecast">
+            <table id="table1">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr style="color: #DF3A01;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr style="color: #2E9AFE;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="details" id="display_details1"></div>
+        <div class="sunmoon" id="display_sunmoon1"></div>
+        <div class="windpressure" id="display_windpressure1"></div>
+        
+    </div>
+    
+    <div class="content_right">
+        
+        <div class="city" id="display_cityname2"></div>
+        <div class="geo" id="display_geo2"></div>
+        <div class="current" id="display_current2"></div>
+        <div id="display_forecast2" class="forecast">
+            <table id="table2">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr style="color: #DF3A01;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr style="color: #2E9AFE;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="details" id="display_details2"></div>
+        <div class="sunmoon" id="display_sunmoon2"></div>
+        <div class="windpressure" id="display_windpressure2"></div>
+    </div>
+    
+    <div id="compare" class="comparison"></div>
+    
+    <div class="graph"></div>
+   
+</div>
 
-     
-
-
-      <h1>SOCR Weather API project</h1>
-
-
-      <!--<form class="form-signin" role="form">-->
-        <h2 class="form-signin-heading">Please input zip code of two cities</h2>
-        <input type="text"  placeholder="Zip code" id="input1">
-        <input type="text"  placeholder="Zip code" id="input2">
-        <button id ='zip'>submit</button>
-      <!--</form>-->
-
-
-
-<div id='location1'align=left width=50% ></div>
-<div id='location2'align=center width=50% ></div>
-
-<div id='temperature1'align=left width=50% ></div>
-<div id='temperature2'align=center width=50% ></div>
-<div id='high1'align=left width=50% ></div>
-<div id='high2'align=center width=50% ></div>
-<div id='low1'align=left width=50% ></div>
-<div id='low2'align=center width=50% ></div>
-<div id='chill1'align=left width=50% ></div>
-<div id='chill2'align=center width=50% ></div>
-<div id='sunrise1'align=left width=50% ></div>
-<div id='sunrise2'align=center width=50% ></div>
-<div id='sunset1'align=left width=50% ></div>
-<div id='sunset2'align=center width=50% ></div>
-
-<div id='humidity1'align=left width=50% ></div>
-<div id='humidity2'align=center width=50% ></div>
-
-<div id='barometer1'align=left width=50% ></div>
-<div id='barometer2'align=center width=50% ></div>
-<div id='direction1'align=left width=50% ></div>
-<div id='direction2'align=center width=50% ></div>
-<div id='speed1'align=left width=50% ></div>
-
-<div id='speed2'align=center width=50% ></div>
-
-
-
-<div id='comparison'width=100%>hi</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-  </body>
+    
+    
+    
+    
+</body>
 </html>
