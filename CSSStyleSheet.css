@@ -162,13 +162,19 @@ table {
 
 #sunmoonimg1{
     position: absolute;
-    top: 1085px;
+    top: 1065px;
+    width: 180px;
+    height: 160px;
+    opacity: 0.8;
     left: 30px;
 }
 
 #sunmoonimg2{
     position: absolute;
-    top: 1085px;
+    top: 1065px;
+    width: 180px;
+    height: 160px;
+    opacity: 0.8;
     left: 52%;
 }
 
@@ -192,20 +198,26 @@ table {
 
 #windimg1{
     position: absolute;
-    top: 1070px;
-    left: 37%;
+    top: 1068px;
+    width: 180px;
+    height: 160px;
+    opacity: 0.8;
+    left: 35%;
 }
 
 #windimg2{
     position: absolute;
-    top: 1030px;
+    top: 1050px;
+    width: 180px;
+    height: 130px;
+    opacity: 0.8;
     left: 88%;
 }
 
 .comparison{
     position:absolute;
     top:1050px;
-    left:10px;
+    left:5px;
     width: 98%;
     height: 150px;
     text-align: center;
