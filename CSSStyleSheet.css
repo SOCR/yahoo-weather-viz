@@ -10,42 +10,49 @@ h1 {font-family:Georgia,serif;color:#ccc;text-align:center;}
 form.form-search {text-align:center;} 
 
 table {
-    height: 230px;
-    width: 96%;
-    border-style: solid;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    height: 250px;
+    width: 100%;
     padding-bottom: 30px;
+    font-size: auto;  
 }
 
-tr{
-    border-style: solid;
-}
-
-td{
-    border-style: solid;
-}
 
 .wea{
     color: #fff;
     text-shadow: 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.3), 0 0 0 rgba(255,255,255,0.1), 0 0 0 rgba(255,255,255,0.1), 0 0 5px rgba(0,0,0,0.5);
 }
 
+.progress_bar {
+    width: 400px;
+    position: absolute;
+    top: 125px;
+    right: 10%;
+}
 
 .content{
     position: absolute;
     margin:auto;
-	width:100%;
-	height:1500px;
-    border:2px solid;
-    border-color: red;
+    width:100%;
+    height:1700px;
+    text-shadow:0px 2px 20px rgba(255,255,255,1);
+    font-weight:normal;
+    color:#000000;
+    letter-spacing:0pt;
+    word-spacing:1pt;
+    font-size:5px;
+    text-align:left;
+    font-family:Georgia;
+    
 }
 
 .content_left{
     position: absolute;
     margin:auto;
-	width:50%;
-	height:1500px;
-    border:2px solid;
-    border-color: blue;
+    width:50%;
+    height:1700px;
     left:0px;
     
 }
@@ -53,137 +60,220 @@ td{
 .content_right{
     position: absolute;
     margin:auto;
-	width:50%;
-	height:1500px;
+    width:50%;
+    height:1700px;
     left:50%;
-    border:2px solid;
-    border-color: blue; 
 }
 
 .city{
     position:absolute;
-	top:10px;
-	left:10px;
+    top:10px;
+    left:10px;
     width:96%;
     padding-top: 5px;
     height: 40px;
-	font-family:Georgia;
-	font-size:30px;
-	color:black;
-    border:2px solid;
-    border-color: green; 
+    font-family:Georgia;
+    font-size:30px;
+    color:black;
     
 }
 
 .geo{
 
     position:absolute;
-	top:60px;
-    padding-top: 5px;
-	left:10px;
+    top:50px;
+    padding-top: 1px;
+    padding-left: 10px;
+    left:10px;
     height: 30px;
     width:96%;
-	font-family:Georgia;
-	font-size:20px;
-	color:black;
-    border:2px solid;
-    border-color: black; 
+    font-family:Georgia;
+    font-size:15px;
+    color:black; 
 
 }
 
 .current{
-	position:absolute;
+    position:absolute;
     padding-top: 30px;
-    top:100px;
-	left:10px;
-    height: 70px;
+    top:80px;
+    left:10px;
+    height: 50px;
     width:96%;
-	font-family:Georgia;
-	font-size:90px;
-	color:black;
-	font-weight:lighter;
-    border:2px solid;
-    border-color: yellow;
+    font-family:Georgia;
+    font-size:90px;
+    color:black;
+    font-weight:lighter;
 }
 
 .forecast{
-	position:absolute;
-	top:210px;
-	left:5px;
-    width: 92%;
-    height: 260px;
+    position:absolute;
+    top:175px;
+    left:5px;
+    width: 97%;
+    height: 265px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-left: 40px;
+    padding-left: 10px;
     padding-top: 40px;
     font-size:25px;
     float:left;
-	}
+    line-height:normal;
+    }
 
 .details{
     position:absolute;
-	top:515px;
-	left:10px;
-    width: 96%;
-    height: 150px;
+    top:490px;
+    left:5px;
+    width: 95%;
+    height: 265px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-top:100px;
+    padding-top:20px;
+    padding-left: 20px;
     font-size:25px;
     float:left;
+    line-height:normal;
 }
 
 .sunmoon{
     position:absolute;
-	top:770px;
-	left:10px;
-    width: 47%;
-    height: 150px;
+    top:785px;
+    left:5px;
+    width: 46%;
+    height: 230px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-top:100px;
+    padding-top:30px;
+    padding-left: 20px;
     font-size:25px;
     float:left;
+    line-height:normal;
+}
+
+#sunmoonimg1{
+    position: absolute;
+    top: 1085px;
+    left: 30px;
+}
+
+#sunmoonimg2{
+    position: absolute;
+    top: 1085px;
+    left: 52%;
 }
 
 .windpressure{
     position:absolute;
-	top:770px;
-    left: 51%;
-    width: 47%;
-    height: 150px;
+    top:785px;
+    right: 2px;
+    width: 46%;
+    height: 230px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-top:100px;
+    padding-top:30px;
+    padding-left: 20px;
     font-size:25px;
     float:left;
+    line-height:normal;
+}
+
+#windimg1{
+    position: absolute;
+    top: 1070px;
+    left: 37%;
+}
+
+#windimg2{
+    position: absolute;
+    top: 1030px;
+    left: 88%;
 }
 
 .comparison{
-	position:absolute;
-	top:1030px;
-	left:10px;
-    width: 96%;
+    position:absolute;
+    top:1050px;
+    left:10px;
+    width: 98%;
     height: 150px;
-	text-align: center;
+    text-align: center;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-top:100px;
+    padding-top:15px;
     font-size:25px;
-    float:left;	
+    float:left; 
+    line-height:normal;
+}
+
+.block{
+    position:absolute;
+    width: 96%;
+    height: 350px;
+    top: 1330px;
+    left: 20px;
+    float:left;
+    text-align: center;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    padding-top:30px;
+    border: 0px solid;
+}
+
+.graph{
+    position:absolute;
+    top:1230px;
+    left:20px;
+    width: 96%;
+    height: 350px;
+    text-align: center;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid #f7f2f7;
+    background:rgba(40,48,77,0.5);
+    font-size:25px;
+    float:left; 
+}
+
+path {
+        stroke: steelblue;
+        stroke-width: 1;
+        fill: none;
+}
+
+.axis {
+        shape-rendering: crispEdges;
+}
+ 
+.x.axis line {
+        stroke: lightgrey;
+}
+ 
+.x.axis .minor {
+        stroke-opacity: .5;
+}
+ 
+.x.axis path {
+        display: none;
+}
+ 
+.y.axis line, .y.axis path {
+        fill: none;
+        stroke: #000;
 }
