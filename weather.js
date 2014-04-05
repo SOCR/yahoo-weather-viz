@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("#getit").click(function(){
         CityArray.push(new Object());
         CityNumber+=1;
-        insertandcheck();
+        if (insertandcheck()){
          
         if(CityNumber==0){
         $(".progress_bar").show();
@@ -47,8 +47,9 @@ $(document).ready(function(){
                setTimeout(compare,500);
           });
       }
-        setTimeout(function(){drawGraph();$(".progress_bar").hide();},500);
-
+        setTimeout(function(){drawGraph();
+        $(".progress_bar").hide();},500);
+    }
     })
    
     function insertandcheck(){
@@ -62,6 +63,7 @@ $(document).ready(function(){
            else{
                CityArray[CityNumber].zipcode = zipcodeValue;
                getWoeidNumber(CityArray[CityNumber].zipcode);
+               return true;
             }
         };
     
