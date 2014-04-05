@@ -1,3 +1,20 @@
+/*
+
+    Fix description, images, cloudy/sunny/etc API calls
+    Verify the entire thing is going to show before storing any information
+    Resize
+
+    Full documentation
+
+    Navigation bar: SOCR Umich page, developer names with github links, target=_blank
+    Center the images, forms, etc
+    Zip codes in () following city name in D3 graph key
+    Eliminate progress bar
+    if no state then don't prepend the state initial (, ) before the city
+    Mon = Monday, Tue = Tuesday, etc on temperature comparisons
+
+*/
+
 $(document).ready(function(){
     var CityArray = new Array();
     var CityNumber = -1;
@@ -17,10 +34,10 @@ $(document).ready(function(){
     //     }
     // });
 
-    $("#zipcode").keydown(function(event){
+    $("#zipcode").keypress(function(event){
         if(event.which == 13){
+          event.preventDefault();  
           geteverything();
-          event.preventDefault();
         }
       });
     
@@ -151,11 +168,15 @@ $(document).ready(function(){
             $("#table1 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table1 td:eq(4)").html(CityArray[CityNumber].day5);
         
-            $("#table1 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
+            //if(CityArray[CityNumber].day1icon)
+            //{
+                $("#table1 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
             $("#table1 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
             $("#table1 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
             $("#table1 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
             $("#table1 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
+            //}
+            
         
             $("#table1 td:eq(10)").html(CityArray[CityNumber].date1);
             $("#table1 td:eq(11)").html(CityArray[CityNumber].date2);
@@ -319,9 +340,10 @@ $(document).ready(function(){
     };
 
     function getnewdata(data){
-           getdescription(data);
-           geticon(data);
-           getforecast_text(data);
+           //if(data.query.results.forecast.txt_forecast.forecastday[0].fcttext) {
+                getdescription(data);
+                geticon(data);
+                getforecast_text(data);
     };    
 
     function getdescription(data){
