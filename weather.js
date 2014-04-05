@@ -29,7 +29,7 @@ $(document).ready(function(){
             showImage_2();
         
         }
-        
+         
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
