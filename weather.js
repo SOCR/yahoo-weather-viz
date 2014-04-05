@@ -48,7 +48,6 @@ $(document).ready(function(){
           });
       }
         setTimeout(function(){drawGraph();
-        setTimeout($(".progress_bar").hide(), 500);
 
     })
    
