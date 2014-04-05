@@ -7,7 +7,6 @@ $(document).ready(function(){
     })
     
     $("#question").hide();
-    $(".progress_bar").hide();
     
     $("#getit").click(function(){
         CityArray.push(new Object());
@@ -15,14 +14,12 @@ $(document).ready(function(){
         insertandcheck();
          
         if(CityNumber==0){
-        $(".progress_bar").show();
         setTimeout(show_1,1200);
         city_left=CityArray[CityNumber];
         showImage_1();
         }
         
         else if(CityNumber==1){
-            $(".progress_bar").show();
             setTimeout(show_2,1200);
             city_right=CityArray[CityNumber];
             setTimeout(compare,500);
@@ -33,14 +30,12 @@ $(document).ready(function(){
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
-              $(".progress_bar").show();
               setTimeout(show_1,1200);
                $("#question").hide();
                city_left=CityArray[CityNumber];
                setTimeout(compare,500);
           });
           $("#right").click(function(){
-              $(".progress_bar").show();
               setTimeout(show_2,1200);
                $("#question").hide();
                city_right=CityArray[CityNumber];
