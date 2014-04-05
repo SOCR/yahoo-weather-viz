@@ -1,21 +1,20 @@
 /*
 
-    #SOCR-17
+    #SOCR-27
     Fix description, images, cloudy/sunny/etc API calls
     Verify the entire thing is going to show before storing any information
     Resize
 
-    #SOCR-19
+    #SOCR-25
     Full documentation
 
-    #SOCR-18
+    #SOCR-26
     Navigation bar: SOCR Umich page, developer names with github links, target=_blank
     Center the images, forms, etc
     Zip codes in () following city name in D3 graph key
     Eliminate progress bar
     if no state then don't prepend the state initial (, ) before the city
     Mon = Monday, Tue = Tuesday, etc on temperature comparisons
-    Change dates to month/day
 
     #SOCR-23 #SOCR-15
     Code cleanup (indentation, etc)
@@ -333,11 +332,26 @@ $(document).ready(function(){
             var city=CityArray[CityNumber].place;
             var replacedCity=city.split(' ').join('%20');
             var geolocation= replacedCity+"%2C"+CityArray[CityNumber].state;   
-            getWunderground(geolocation); 
+            if (CityArray[CityNumber].country=="United States"){
+                 getWunderground_1(geolocation); 
+            }
+            else{
+                getWunderground_2(replacedCity); 
+            }
             
     };
 
-    function getWunderground(z){
+    function getWunderground_1(z){
+        var Part_1="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20wunderground.forecast%20where%20location%3D'";
+        var Part_2="'%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+        var geoURL=Part_1+z+Part_2;
+        $.ajax({
+                     url: geoURL,
+                     success: getnewdata
+                     });
+    };
+
+    function getWunderground_2(z){
         var Part_1="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20wunderground.forecast%20where%20location%3D'";
         var Part_2="'%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
         var geoURL=Part_1+z+Part_2;
