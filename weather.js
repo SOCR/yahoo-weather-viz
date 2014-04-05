@@ -1,17 +1,25 @@
 /*
 
+    #SOCR-17
     Fix description, images, cloudy/sunny/etc API calls
     Verify the entire thing is going to show before storing any information
     Resize
 
+    #SOCR-19
     Full documentation
 
+    #SOCR-18
     Navigation bar: SOCR Umich page, developer names with github links, target=_blank
     Center the images, forms, etc
     Zip codes in () following city name in D3 graph key
     Eliminate progress bar
     if no state then don't prepend the state initial (, ) before the city
     Mon = Monday, Tue = Tuesday, etc on temperature comparisons
+    Change dates to month/day
+
+    #SOCR-23 #SOCR-15
+    Code cleanup (indentation, etc)
+    Full demo
 
 */
 
@@ -47,10 +55,10 @@ $(document).ready(function(){
         if (insertandcheck()){
          
         if(CityNumber==0){
-        $(".progress_bar").show();
-        setTimeout(show_1,1200);
-        city_left=CityArray[CityNumber];
-        showImage_1();
+            $(".progress_bar").show();
+            setTimeout(show_1,1200);
+            city_left=CityArray[CityNumber];
+            showImage_1();
         }
         
         else if(CityNumber==1){
@@ -385,11 +393,16 @@ $(document).ready(function(){
         CityArray[CityNumber].day4=data.query.results.channel.item.forecast[3].day;
         CityArray[CityNumber].day5=data.query.results.channel.item.forecast[4].day;
 
-        CityArray[CityNumber].date1=data.query.results.channel.item.forecast[0].date;
-        CityArray[CityNumber].date2=data.query.results.channel.item.forecast[1].date;
-        CityArray[CityNumber].date3=data.query.results.channel.item.forecast[2].date;
-        CityArray[CityNumber].date4=data.query.results.channel.item.forecast[3].date;
-        CityArray[CityNumber].date5=data.query.results.channel.item.forecast[4].date;
+        var goodDate1 = tranformDate(data.query.results.channel.item.forecast[0].date);
+        CityArray[CityNumber].date1 = goodDate1;
+        var goodDate2 = tranformDate(data.query.results.channel.item.forecast[1].date);
+        CityArray[CityNumber].date2 = goodDate2;
+        var goodDate3 = tranformDate(data.query.results.channel.item.forecast[2].date);
+        CityArray[CityNumber].date3 = goodDate3;
+        var goodDate4 = tranformDate(data.query.results.channel.item.forecast[3].date);
+        CityArray[CityNumber].date4 = goodDate4;
+        var goodDate5 = tranformDate(data.query.results.channel.item.forecast[4].date);
+        CityArray[CityNumber].date5 = goodDate5;
         
         CityArray[CityNumber].code1=data.query.results.channel.item.forecast[0].code;
         CityArray[CityNumber].code2=data.query.results.channel.item.forecast[1].code;
@@ -411,8 +424,55 @@ $(document).ready(function(){
         
     };
 
+    function tranformDate(date){
+            var splitString = date.split(/\s+/);
+            var day = splitString[0];
+            var month = determineMonth(splitString[1]);
+            return month + '/' + day;
+    }
+
+    function determineMonth(month){
+        switch(month){
+            case 'Jan':
+                return 1;
+                break;
+            case 'Feb':
+                return 2;
+                break;
+            case 'Mar':
+                return 3;
+                break;
+            case 'Apr':
+                return 4;
+                break;
+            case 'May':
+                return 5;
+                break;
+            case 'Jun':
+                return 6;
+                break;
+            case 'Jul':
+                return 7;
+                break;
+            case 'Aug':
+                return 8;
+                break;
+            case 'Sep':
+                return 9;
+                break;
+            case 'Oct':
+                return 10;
+                break;
+            case 'Nov':
+                return 11;
+                break;
+            case 'Dec':
+                return 12;
+                break;
+        }
+    }
+
     function getWoeid(data){
-            //alert('Hi');
             CityArray[CityNumber].woeid= data.query.results.place[0].woeid;
             getWeather(CityArray[CityNumber].woeid);
     };
