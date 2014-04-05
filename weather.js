@@ -13,7 +13,7 @@
     Center the images, forms, etc
     Zip codes in () following city name in D3 graph key
     Eliminate progress bar
-    if no state then don't prepend the state initial (, ) before the city
+    if no state then don't prepend the state initial (, ) before the city 
     Mon = Monday, Tue = Tuesday, etc on temperature comparisons
 
     #SOCR-23 #SOCR-15
