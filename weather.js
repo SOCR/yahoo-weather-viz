@@ -8,8 +8,23 @@ $(document).ready(function(){
     
     $("#question").hide();
     $(".progress_bar").hide();
+
+    // $('#zipcode').keyup(function(event) {
+    //     var keycode = (event.keyCode ? event.keyCode : event.which);
+    //     if(keycode == 13) {   
+    //         // Run function to display results
+    //         geteverything();
+    //     }
+    // });
+
+    $("#zipcode").keydown(function(event){
+        if(event.which == 13){
+          geteverything();
+          event.preventDefault();
+        }
+      });
     
-    $("#getit").click(function(){
+    function geteverything(){
         CityArray.push(new Object());
         CityNumber+=1;
         if (insertandcheck()){
@@ -29,7 +44,7 @@ $(document).ready(function(){
             showImage_2();
         
         }
-          
+        
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
@@ -50,7 +65,9 @@ $(document).ready(function(){
         setTimeout(function(){drawGraph();
         $(".progress_bar").hide();},500);
     }
-    })
+    }
+
+    $("#getit").click(geteverything);
    
     function insertandcheck(){
             
