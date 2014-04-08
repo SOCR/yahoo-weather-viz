@@ -11,7 +11,6 @@
     #SOCR-26
     d3 的图改宽一点
     Center the images, forms, etc
-    if no state then don't prepend the state initial (, ) before the city
 
     #SOCR-23 #SOCR-15
     Code cleanup (indentation, etc)
@@ -135,7 +134,7 @@ $(document).ready(function(){
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
         
-            content_geo=content_state+",  "+content_country;
+            content_geo=getGeo(CityArray[CityNumber].country);
 
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
@@ -214,7 +213,7 @@ $(document).ready(function(){
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
          
-            content_geo=content_state+",  "+content_country;
+            content_geo=getGeo(CityArray[CityNumber].country);
 
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
@@ -285,6 +284,19 @@ $(document).ready(function(){
 
     };
 
+    function getGeo(country){
+            if ( country == "United States")
+            {
+                content_geo = CityArray[CityNumber].state+", "+CityArray[CityNumber].country;
+                return content_geo;
+            }
+            else
+            {
+                content_geo = CityArray[CityNumber].country;
+                return content_geo;
+            }
+
+    }
 
     function getWoeidNumber(x){
             var firstPart = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22";
