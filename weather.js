@@ -9,10 +9,8 @@
     Full documentation
 
     #SOCR-26
-    Navigation bar: SOCR Umich page, developer names with github links, target=_blank
+    d3 的图改宽一点
     Center the images, forms, etc
-    Zip codes in () following city name in D3 graph key
-    Eliminate progress bar
     if no state then don't prepend the state initial (, ) before the city 
     Mon = Monday, Tue = Tuesday, etc on temperature comparisons
 
@@ -54,14 +52,14 @@ $(document).ready(function(){
         if (insertandcheck()){
          
         if(CityNumber==0){
-            $(".progress_bar").show();
+            //$(".progress_bar").show();
             setTimeout(show_1,1200);
             city_left=CityArray[CityNumber];
             showImage_1();
         }
         
         else if(CityNumber==1){
-            $(".progress_bar").show();
+           // $(".progress_bar").show();
             setTimeout(show_2,1200);
             city_right=CityArray[CityNumber];
             setTimeout(compare,500);
@@ -72,14 +70,14 @@ $(document).ready(function(){
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
-              $(".progress_bar").show();
+             // $(".progress_bar").show();
               setTimeout(show_1,1200);
                $("#question").hide();
                city_left=CityArray[CityNumber];
                setTimeout(compare,500);
           });
           $("#right").click(function(){
-              $(".progress_bar").show();
+             // $(".progress_bar").show();
               setTimeout(show_2,1200);
                $("#question").hide();
                city_right=CityArray[CityNumber];
@@ -87,7 +85,7 @@ $(document).ready(function(){
           });
       }
         setTimeout(function(){drawGraph();
-        $(".progress_bar").hide();},500);
+       $(".progress_bar").hide();},500);
     }
     }
 
@@ -743,7 +741,7 @@ $(document).ready(function(){
                         .attr("x", 3)
                         .attr("dy", ".35em")
                         .style("fill",colors[CityNumber])
-                        .text("• "+CityArray[CityNumber].place);
+                        .text("• "+CityArray[CityNumber].place+" ("+CityArray[CityNumber].zipcode+")");
         
                 graph.append("svg:path").attr("d", line(data))
                 .style("stroke",colors[CityNumber]);
