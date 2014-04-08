@@ -11,8 +11,7 @@
     #SOCR-26
     d3 的图改宽一点
     Center the images, forms, etc
-    if no state then don't prepend the state initial (, ) before the city 
-    Mon = Monday, Tue = Tuesday, etc on temperature comparisons
+    if no state then don't prepend the state initial (, ) before the city
 
     #SOCR-23 #SOCR-15
     Code cleanup (indentation, etc)
@@ -167,8 +166,8 @@ $(document).ready(function(){
             $("#display_current1").html(content_current);
             
         
-            $("#table1 td:eq(0)").html("Today");
-            $("#table1 td:eq(1)").html("Tomorrow");
+            $("#table1 td:eq(0)").html(CityArray[CityNumber].day1);
+            $("#table1 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table1 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table1 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table1 td:eq(4)").html(CityArray[CityNumber].day5);
@@ -248,8 +247,8 @@ $(document).ready(function(){
             $("#display_todayhl2").html(content_todayhl);
             $("#display_current2").html(content_current);
          
-            $("#table2 td:eq(0)").html("Today");
-            $("#table2 td:eq(1)").html("Tomorrow");
+            $("#table2 td:eq(0)").html(CityArray[CityNumber].day1);
+            $("#table2 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table2 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table2 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table2 td:eq(4)").html(CityArray[CityNumber].day5);
@@ -399,21 +398,26 @@ $(document).ready(function(){
         CityArray[CityNumber].day4temp=(Math.round(data.query.results.channel.item.forecast[3].high)+Math.round(data.query.results.channel.item.forecast[3].low))/2;
         CityArray[CityNumber].day5temp=(Math.round(data.query.results.channel.item.forecast[4].high)+Math.round(data.query.results.channel.item.forecast[4].low))/2;
         
-        CityArray[CityNumber].day1=data.query.results.channel.item.forecast[0].day;
-        CityArray[CityNumber].day2=data.query.results.channel.item.forecast[1].day;
-        CityArray[CityNumber].day3=data.query.results.channel.item.forecast[2].day;
-        CityArray[CityNumber].day4=data.query.results.channel.item.forecast[3].day;
-        CityArray[CityNumber].day5=data.query.results.channel.item.forecast[4].day;
+        var day1 = transformDay(data.query.results.channel.item.forecast[0].day);
+        CityArray[CityNumber].day1 = day1;
+        var day2 = transformDay(data.query.results.channel.item.forecast[1].day);
+        CityArray[CityNumber].day2 = day2;
+        var day3 = transformDay(data.query.results.channel.item.forecast[2].day);
+        CityArray[CityNumber].day3 = day3;
+        var day4 = transformDay(data.query.results.channel.item.forecast[3].day);
+        CityArray[CityNumber].day4 = day4;
+        var day5 = transformDay(data.query.results.channel.item.forecast[4].day);
+        CityArray[CityNumber].day5 = day5;
 
-        var goodDate1 = tranformDate(data.query.results.channel.item.forecast[0].date);
+        var goodDate1 = transformDate(data.query.results.channel.item.forecast[0].date);
         CityArray[CityNumber].date1 = goodDate1;
-        var goodDate2 = tranformDate(data.query.results.channel.item.forecast[1].date);
+        var goodDate2 = transformDate(data.query.results.channel.item.forecast[1].date);
         CityArray[CityNumber].date2 = goodDate2;
-        var goodDate3 = tranformDate(data.query.results.channel.item.forecast[2].date);
+        var goodDate3 = transformDate(data.query.results.channel.item.forecast[2].date);
         CityArray[CityNumber].date3 = goodDate3;
-        var goodDate4 = tranformDate(data.query.results.channel.item.forecast[3].date);
+        var goodDate4 = transformDate(data.query.results.channel.item.forecast[3].date);
         CityArray[CityNumber].date4 = goodDate4;
-        var goodDate5 = tranformDate(data.query.results.channel.item.forecast[4].date);
+        var goodDate5 = transformDate(data.query.results.channel.item.forecast[4].date);
         CityArray[CityNumber].date5 = goodDate5;
         
         CityArray[CityNumber].code1=data.query.results.channel.item.forecast[0].code;
@@ -436,7 +440,35 @@ $(document).ready(function(){
         
     };
 
-    function tranformDate(date){
+    function transformDay(data){
+            switch(data){
+                case 'Mon':
+                return  'Monday';
+                break;
+                case 'Tue':
+                return  'Tuesday';
+                break;
+                case 'Wed':
+                return  'Wednesday';
+                break;
+                case 'Thu':
+                return  'Thursday';
+                break;
+                case 'Fri':
+                return  'Friday';
+                break;
+                case 'Sat':
+                return  'Saturday';
+                break;
+                case 'Sun':
+                return  'Sunday';
+                break;
+            }
+
+
+    }
+
+    function transformDate(date){
             var splitString = date.split(/\s+/);
             var day = splitString[0];
             var month = determineMonth(splitString[1]);
