@@ -1,17 +1,18 @@
 /*
 
-    Fix description, images, cloudy/sunny/etc API calls
+    #SOCR-27
     Verify the entire thing is going to show before storing any information
     Resize
 
+    #SOCR-25
     Full documentation
 
-    Navigation bar: SOCR Umich page, developer names with github links, target=_blank
-    Center the images, forms, etc
-    Zip codes in () following city name in D3 graph key
-    Eliminate progress bar
-    if no state then don't prepend the state initial (, ) before the city
-    Mon = Monday, Tue = Tuesday, etc on temperature comparisons
+    #SOCR-26
+    Widen d3 graph
+
+    #SOCR-23 #SOCR-15
+    Code cleanup (indentation, etc)
+    Full demo
 
 */
 
@@ -41,20 +42,21 @@ $(document).ready(function(){
         }
       });
     
+    //when user click the getWeather button, all data will be retrieved, we store city's data into an array
     function geteverything(){
         CityArray.push(new Object());
         CityNumber+=1;
         if (insertandcheck()){
          
         if(CityNumber==0){
-        $(".progress_bar").show();
-        setTimeout(show_1,1200);
-        city_left=CityArray[CityNumber];
-        showImage_1();
+            //$(".progress_bar").show();
+            setTimeout(show_1,1200);
+            city_left=CityArray[CityNumber];
+            showImage_1();
         }
         
         else if(CityNumber==1){
-            $(".progress_bar").show();
+           // $(".progress_bar").show();
             setTimeout(show_2,1200);
             city_right=CityArray[CityNumber];
             setTimeout(compare,500);
@@ -65,14 +67,14 @@ $(document).ready(function(){
       else if(CityNumber>=2){
           $("#question").show();
           $("#left").click(function(){
-              $(".progress_bar").show();
+             // $(".progress_bar").show();
               setTimeout(show_1,1200);
                $("#question").hide();
                city_left=CityArray[CityNumber];
                setTimeout(compare,500);
           });
           $("#right").click(function(){
-              $(".progress_bar").show();
+             // $(".progress_bar").show();
               setTimeout(show_2,1200);
                $("#question").hide();
                city_right=CityArray[CityNumber];
@@ -80,12 +82,14 @@ $(document).ready(function(){
           });
       }
         setTimeout(function(){drawGraph();
-        $(".progress_bar").hide();},500);
+       $(".progress_bar").hide();},500);
     }
     }
 
     $("#getit").click(geteverything);
-   
+
+
+    //check whether the zipcode is valid
     function insertandcheck(){
             
            var zipcodeValue =document.getElementById('zipcode').value;
@@ -101,6 +105,7 @@ $(document).ready(function(){
             }
         };
     
+
     function showImage_1(){
         var windimg = document.createElement('div');
         windimg.id="windimg1";
@@ -125,13 +130,14 @@ $(document).ready(function(){
         $("#sunmoonimg2").append('<img src="http://aspgweather.com/cumulus/sunset_icon.png">')
     }
     
+    //show left city's data
     function show_1(){
             $("#container").show();
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
         
-            content_geo=content_state+",  "+content_country;
+            content_geo=getGeo(CityArray[CityNumber].country);
 
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
@@ -162,8 +168,8 @@ $(document).ready(function(){
             $("#display_current1").html(content_current);
             
         
-            $("#table1 td:eq(0)").html("Today");
-            $("#table1 td:eq(1)").html("Tomorrow");
+            $("#table1 td:eq(0)").html(CityArray[CityNumber].day1);
+            $("#table1 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table1 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table1 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table1 td:eq(4)").html(CityArray[CityNumber].day5);
@@ -204,13 +210,14 @@ $(document).ready(function(){
 
     };
     
+     //show right city's data
      function show_2(){
             $("#container").show();
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
          
-            content_geo=content_state+",  "+content_country;
+            content_geo=getGeo(CityArray[CityNumber].country);
 
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
@@ -243,8 +250,8 @@ $(document).ready(function(){
             $("#display_todayhl2").html(content_todayhl);
             $("#display_current2").html(content_current);
          
-            $("#table2 td:eq(0)").html("Today");
-            $("#table2 td:eq(1)").html("Tomorrow");
+            $("#table2 td:eq(0)").html(CityArray[CityNumber].day1);
+            $("#table2 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table2 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table2 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table2 td:eq(4)").html(CityArray[CityNumber].day5);
@@ -281,7 +288,22 @@ $(document).ready(function(){
 
     };
 
+    //if the choosen city is from US, the website will show its state and country. Otherwise, the website will only show its country.
+    function getGeo(country){
+            if ( country == "United States")
+            {
+                content_geo = CityArray[CityNumber].state+", "+CityArray[CityNumber].country;
+                return content_geo;
+            }
+            else
+            {
+                content_geo = CityArray[CityNumber].country;
+                return content_geo;
+            }
 
+    }
+
+    //Use the entered zipcode to get Woeid through API
     function getWoeidNumber(x){
             var firstPart = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22";
             var secondPart = "%22&format=json&diagnostics=true&callback=";
@@ -292,6 +314,7 @@ $(document).ready(function(){
                 });
     };
 
+    //Use the Woeid to get the Weather data through API
     function getWeather(y){
                var fPart="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D";
                var sPart="&format=json&diagnostics=true&callback=";
@@ -304,7 +327,7 @@ $(document).ready(function(){
 
 
 
-
+    //functions to call all the weather data
     function getWeatherData(data){
             getWindChill(data);
             getSunrise(data);
@@ -318,6 +341,7 @@ $(document).ready(function(){
             getVisibility(data);
     };
 
+    //function to get the cityname, state, country by the given zipcode
     function getlocation(data){
             CityArray[CityNumber].place=data.query.results.channel.location.city;
             CityArray[CityNumber].state=data.query.results.channel.location.region;
@@ -325,11 +349,26 @@ $(document).ready(function(){
             var city=CityArray[CityNumber].place;
             var replacedCity=city.split(' ').join('%20');
             var geolocation= replacedCity+"%2C"+CityArray[CityNumber].state;   
-            getWunderground(geolocation); 
+            if (CityArray[CityNumber].country=="United States"){
+                 getWunderground_1(geolocation); 
+            }
+            else{
+                getWunderground_2(replacedCity); 
+            }
             
     };
 
-    function getWunderground(z){
+    //get more detailed data from another API
+    function getWunderground_1(z){
+        var Part_1="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20wunderground.forecast%20where%20location%3D'";
+        var Part_2="'%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+        var geoURL=Part_1+z+Part_2;
+        $.ajax({
+                     url: geoURL,
+                     success: getnewdata
+                     });
+    };
+    function getWunderground_2(z){
         var Part_1="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20wunderground.forecast%20where%20location%3D'";
         var Part_2="'%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
         var geoURL=Part_1+z+Part_2;
@@ -339,6 +378,7 @@ $(document).ready(function(){
                      });
     };
 
+    //functions to get the future descriptions, icons
     function getnewdata(data){
            //if(data.query.results.forecast.txt_forecast.forecastday[0].fcttext) {
                 getdescription(data);
@@ -368,6 +408,7 @@ $(document).ready(function(){
 
     }
 
+    //function to get weather forecast in the following five days
     function getdaytemp(data){
 
             /*var day1high=Math.round(data.query.results.channel.item.forecast[0].high);
@@ -379,17 +420,27 @@ $(document).ready(function(){
         CityArray[CityNumber].day4temp=(Math.round(data.query.results.channel.item.forecast[3].high)+Math.round(data.query.results.channel.item.forecast[3].low))/2;
         CityArray[CityNumber].day5temp=(Math.round(data.query.results.channel.item.forecast[4].high)+Math.round(data.query.results.channel.item.forecast[4].low))/2;
         
-        CityArray[CityNumber].day1=data.query.results.channel.item.forecast[0].day;
-        CityArray[CityNumber].day2=data.query.results.channel.item.forecast[1].day;
-        CityArray[CityNumber].day3=data.query.results.channel.item.forecast[2].day;
-        CityArray[CityNumber].day4=data.query.results.channel.item.forecast[3].day;
-        CityArray[CityNumber].day5=data.query.results.channel.item.forecast[4].day;
+        var day1 = transformDay(data.query.results.channel.item.forecast[0].day);
+        CityArray[CityNumber].day1 = day1;
+        var day2 = transformDay(data.query.results.channel.item.forecast[1].day);
+        CityArray[CityNumber].day2 = day2;
+        var day3 = transformDay(data.query.results.channel.item.forecast[2].day);
+        CityArray[CityNumber].day3 = day3;
+        var day4 = transformDay(data.query.results.channel.item.forecast[3].day);
+        CityArray[CityNumber].day4 = day4;
+        var day5 = transformDay(data.query.results.channel.item.forecast[4].day);
+        CityArray[CityNumber].day5 = day5;
 
-        CityArray[CityNumber].date1=data.query.results.channel.item.forecast[0].date;
-        CityArray[CityNumber].date2=data.query.results.channel.item.forecast[1].date;
-        CityArray[CityNumber].date3=data.query.results.channel.item.forecast[2].date;
-        CityArray[CityNumber].date4=data.query.results.channel.item.forecast[3].date;
-        CityArray[CityNumber].date5=data.query.results.channel.item.forecast[4].date;
+        var goodDate1 = transformDate(data.query.results.channel.item.forecast[0].date);
+        CityArray[CityNumber].date1 = goodDate1;
+        var goodDate2 = transformDate(data.query.results.channel.item.forecast[1].date);
+        CityArray[CityNumber].date2 = goodDate2;
+        var goodDate3 = transformDate(data.query.results.channel.item.forecast[2].date);
+        CityArray[CityNumber].date3 = goodDate3;
+        var goodDate4 = transformDate(data.query.results.channel.item.forecast[3].date);
+        CityArray[CityNumber].date4 = goodDate4;
+        var goodDate5 = transformDate(data.query.results.channel.item.forecast[4].date);
+        CityArray[CityNumber].date5 = goodDate5;
         
         CityArray[CityNumber].code1=data.query.results.channel.item.forecast[0].code;
         CityArray[CityNumber].code2=data.query.results.channel.item.forecast[1].code;
@@ -411,8 +462,85 @@ $(document).ready(function(){
         
     };
 
+    //function to transform the abbr. 
+    function transformDay(data){
+            switch(data){
+                case 'Mon':
+                return  'Monday';
+                break;
+                case 'Tue':
+                return  'Tuesday';
+                break;
+                case 'Wed':
+                return  'Wednesday';
+                break;
+                case 'Thu':
+                return  'Thursday';
+                break;
+                case 'Fri':
+                return  'Friday';
+                break;
+                case 'Sat':
+                return  'Saturday';
+                break;
+                case 'Sun':
+                return  'Sunday';
+                break;
+            }
+
+
+    }
+
+    //function to transfrom the date to the form of mm/dd/yy
+    function transformDate(date){
+            var splitString = date.split(/\s+/);
+            var day = splitString[0];
+            var month = determineMonth(splitString[1]);
+            return month + '/' + day;
+    }
+
+    function determineMonth(month){
+        switch(month){
+            case 'Jan':
+                return 1;
+                break;
+            case 'Feb':
+                return 2;
+                break;
+            case 'Mar':
+                return 3;
+                break;
+            case 'Apr':
+                return 4;
+                break;
+            case 'May':
+                return 5;
+                break;
+            case 'Jun':
+                return 6;
+                break;
+            case 'Jul':
+                return 7;
+                break;
+            case 'Aug':
+                return 8;
+                break;
+            case 'Sep':
+                return 9;
+                break;
+            case 'Oct':
+                return 10;
+                break;
+            case 'Nov':
+                return 11;
+                break;
+            case 'Dec':
+                return 12;
+                break;
+        }
+    }
+
     function getWoeid(data){
-            //alert('Hi');
             CityArray[CityNumber].woeid= data.query.results.place[0].woeid;
             getWeather(CityArray[CityNumber].woeid);
     };
@@ -511,6 +639,7 @@ $(document).ready(function(){
 
     };
     
+  //function to compare the future temperatures bewteen the left city and the right city  
   function compare(){
         comparison="";
       city_1=city_left;;
@@ -669,7 +798,7 @@ $(document).ready(function(){
                         .attr("x", 3)
                         .attr("dy", ".35em")
                         .style("fill",colors[CityNumber])
-                        .text("• "+CityArray[CityNumber].place);
+                        .text("• "+CityArray[CityNumber].place+" ("+CityArray[CityNumber].zipcode+")");
         
                 graph.append("svg:path").attr("d", line(data))
                 .style("stroke",colors[CityNumber]);
