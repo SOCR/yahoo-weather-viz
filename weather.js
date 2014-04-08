@@ -8,7 +8,7 @@
     Full documentation
 
     #SOCR-26
-    Widen d3 graph
+    d3 的图改宽一点
 
     #SOCR-23 #SOCR-15
     Code cleanup (indentation, etc)
@@ -44,10 +44,8 @@ $(document).ready(function(){
     
     //when user click the getWeather button, all data will be retrieved, we store city's data into an array
     function geteverything(){
-        
         CityArray.push(new Object());
         CityNumber+=1;
-        
         if (insertandcheck()){
          
         if(CityNumber==0){
@@ -85,10 +83,6 @@ $(document).ready(function(){
       }
         setTimeout(function(){drawGraph();
        $(".progress_bar").hide();},500);
-    }
-    else{
-        CityArray.pop();
-        CityNumber-=1;
     }
     }
 
@@ -711,7 +705,7 @@ $(document).ready(function(){
         iDiv.className = "block";
         document.getElementsByTagName('body')[0].appendChild(iDiv);
 
-        var m = [80, 130, 80, 130]; // margins
+        var m = [80, 100, 80, 100]; // margins
         var w = 1000 - m[1] - m[3]; // width
         var h = 400 - m[0] - m[2]; // height
         var colors=["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", "#e377c2", "#f7b6d2, #7f7f7f, #c7c7c7, #bcbd22, #dbdb8d, #17becf, #9edae5"];
@@ -802,10 +796,9 @@ $(document).ready(function(){
                         graph.append("text")
                         .attr("transform", "translate(" + w + " , " + ((CityNumber+1)*15) + ")")
                         .attr("x", 3)
-                        .attr("dy", ".55em")
+                        .attr("dy", ".35em")
                         .style("fill",colors[CityNumber])
-                        .style("font-size","16px")
-                        .text("  • "+CityArray[CityNumber].place/*+" ("+CityArray[CityNumber].zipcode+")"*/);
+                        .text("• "+CityArray[CityNumber].place+" ("+CityArray[CityNumber].zipcode+")");
         
                 graph.append("svg:path").attr("d", line(data))
                 .style("stroke",colors[CityNumber]);
