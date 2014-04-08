@@ -802,7 +802,7 @@ $(document).ready(function(){
                         graph.append("text")
                         .attr("transform", "translate(" + w + " , " + ((CityNumber+1)*15) + ")")
                         .attr("x", 3)
-                        .attr("dy", ".35em")
+                        .attr("dy", ".55em")
                         .style("fill",colors[CityNumber])
                         .style("font-size","20px")
                         .text("  • "+CityArray[CityNumber].place/*+" ("+CityArray[CityNumber].zipcode+")"*/);
