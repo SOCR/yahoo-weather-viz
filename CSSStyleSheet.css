@@ -12,7 +12,7 @@ form.form-search {text-align:center;}
 table {
     position: absolute;
     top: 15px;
-    left: 15px;
+    left: 8px;
     height: 250px;
     width: 100%;
     padding-bottom: 30px;
@@ -112,16 +112,16 @@ table {
     position:absolute;
     top:175px;
     left:5px;
-    width: 97%;
+    width: 99%;
     height: 265px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border: 0px solid #f7f2f7;
     background:rgba(40,48,77,0.5);
-    padding-left: 10px;
+    padding-left: 0px;
     padding-top: 40px;
-    font-size:25px;
+    font-size:22px;
     float:left;
     line-height:normal;
     }
@@ -130,7 +130,7 @@ table {
     position:absolute;
     top:490px;
     left:5px;
-    width: 95%;
+    width: 96%;
     height: 265px;
     border-radius: 25px 25px 25px 25px;
     -moz-border-radius: 25px 25px 25px 25px;
