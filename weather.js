@@ -1,7 +1,6 @@
 /*
 
     #SOCR-27
-    Fix description, images, cloudy/sunny/etc API calls
     Verify the entire thing is going to show before storing any information
     Resize
 
@@ -10,7 +9,6 @@
 
     #SOCR-26
     d3 的图改宽一点
-    Center the images, forms, etc
 
     #SOCR-23 #SOCR-15
     Code cleanup (indentation, etc)
@@ -44,6 +42,7 @@ $(document).ready(function(){
         }
       });
     
+    //when user click the getWeather button, all data will be retrieved, we store city's data into an array
     function geteverything(){
         CityArray.push(new Object());
         CityNumber+=1;
@@ -88,7 +87,9 @@ $(document).ready(function(){
     }
 
     $("#getit").click(geteverything);
-   
+
+
+    //check whether the zipcode is valid
     function insertandcheck(){
             
            var zipcodeValue =document.getElementById('zipcode').value;
@@ -104,6 +105,7 @@ $(document).ready(function(){
             }
         };
     
+
     function showImage_1(){
         var windimg = document.createElement('div');
         windimg.id="windimg1";
@@ -128,6 +130,7 @@ $(document).ready(function(){
         $("#sunmoonimg2").append('<img src="http://aspgweather.com/cumulus/sunset_icon.png">')
     }
     
+    //show left city's data
     function show_1(){
             $("#container").show();
             content_cityname=CityArray[CityNumber].place;
@@ -207,6 +210,7 @@ $(document).ready(function(){
 
     };
     
+     //show right city's data
      function show_2(){
             $("#container").show();
             content_cityname=CityArray[CityNumber].place;
@@ -284,6 +288,7 @@ $(document).ready(function(){
 
     };
 
+    //if the choosen city is from US, the website will show its state and country. Otherwise, the website will only show its country.
     function getGeo(country){
             if ( country == "United States")
             {
@@ -298,6 +303,7 @@ $(document).ready(function(){
 
     }
 
+    //Use the entered zipcode to get Woeid through API
     function getWoeidNumber(x){
             var firstPart = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22";
             var secondPart = "%22&format=json&diagnostics=true&callback=";
@@ -308,6 +314,7 @@ $(document).ready(function(){
                 });
     };
 
+    //Use the Woeid to get the Weather data through API
     function getWeather(y){
                var fPart="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D";
                var sPart="&format=json&diagnostics=true&callback=";
@@ -320,7 +327,7 @@ $(document).ready(function(){
 
 
 
-
+    //functions to call all the weather data
     function getWeatherData(data){
             getWindChill(data);
             getSunrise(data);
@@ -334,6 +341,7 @@ $(document).ready(function(){
             getVisibility(data);
     };
 
+    //function to get the cityname, state, country by the given zipcode
     function getlocation(data){
             CityArray[CityNumber].place=data.query.results.channel.location.city;
             CityArray[CityNumber].state=data.query.results.channel.location.region;
@@ -350,6 +358,7 @@ $(document).ready(function(){
             
     };
 
+    //get more detailed data from another API
     function getWunderground_1(z){
         var Part_1="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20wunderground.forecast%20where%20location%3D'";
         var Part_2="'%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
@@ -359,7 +368,6 @@ $(document).ready(function(){
                      success: getnewdata
                      });
     };
-
     function getWunderground_2(z){
         var Part_1="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20wunderground.forecast%20where%20location%3D'";
         var Part_2="'%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
@@ -370,6 +378,7 @@ $(document).ready(function(){
                      });
     };
 
+    //functions to get the future descriptions, icons
     function getnewdata(data){
            //if(data.query.results.forecast.txt_forecast.forecastday[0].fcttext) {
                 getdescription(data);
@@ -399,6 +408,7 @@ $(document).ready(function(){
 
     }
 
+    //function to get weather forecast in the following five days
     function getdaytemp(data){
 
             /*var day1high=Math.round(data.query.results.channel.item.forecast[0].high);
@@ -452,6 +462,7 @@ $(document).ready(function(){
         
     };
 
+    //function to transform the abbr. 
     function transformDay(data){
             switch(data){
                 case 'Mon':
@@ -480,6 +491,7 @@ $(document).ready(function(){
 
     }
 
+    //function to transfrom the date to the form of mm/dd/yy
     function transformDate(date){
             var splitString = date.split(/\s+/);
             var day = splitString[0];
@@ -627,6 +639,7 @@ $(document).ready(function(){
 
     };
     
+  //function to compare the future temperatures bewteen the left city and the right city  
   function compare(){
         comparison="";
       city_1=city_left;;
@@ -792,4 +805,3 @@ $(document).ready(function(){
         };
     
 })
- 
