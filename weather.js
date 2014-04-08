@@ -804,7 +804,7 @@ $(document).ready(function(){
                         .attr("x", 3)
                         .attr("dy", ".55em")
                         .style("fill",colors[CityNumber])
-                        .style("font-size","20px")
+                        .style("font-size","16px")
                         .text("  • "+CityArray[CityNumber].place/*+" ("+CityArray[CityNumber].zipcode+")"*/);
         
                 graph.append("svg:path").attr("d", line(data))
