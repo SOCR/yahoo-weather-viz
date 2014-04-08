@@ -44,10 +44,11 @@ $(document).ready(function(){
     
     //when user click the getWeather button, all data will be retrieved, we store city's data into an array
     function geteverything(){
-        if (insertandcheck()){
+        
         CityArray.push(new Object());
         CityNumber+=1;
         
+        if (insertandcheck()){
          
         if(CityNumber==0){
             //$(".progress_bar").show();
@@ -84,6 +85,10 @@ $(document).ready(function(){
       }
         setTimeout(function(){drawGraph();
        $(".progress_bar").hide();},500);
+    }
+    else{
+        CityArray.pop();
+        CityNumber-=1;
     }
     }
 
