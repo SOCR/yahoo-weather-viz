@@ -798,7 +798,7 @@ $(document).ready(function(){
                         .attr("x", 3)
                         .attr("dy", ".35em")
                         .style("fill",colors[CityNumber])
-                        .text("• "+CityArray[CityNumber].place+" ("+CityArray[CityNumber].zipcode+")");
+                        .text("• "+CityArray[CityNumber].place);//+" ("+CityArray[CityNumber].zipcode+")");
         
                 graph.append("svg:path").attr("d", line(data))
                 .style("stroke",colors[CityNumber]);
