@@ -88,6 +88,7 @@ $(document).ready(function(){
            }
            else{
                // If zipcode is valid, call gerWoeidNumber to get to location id.
+               CityNumber-=1;
                CityArray[CityNumber].zipcode = zipcodeValue;
                getWoeidNumber(CityArray[CityNumber].zipcode);
                return true;
