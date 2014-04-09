@@ -125,6 +125,8 @@ $(document).ready(function(){
     //show left city's data
     function show_1(){
         
+        if(CityArray[CityNumber].current!=null){
+        
             $("#container").show();
             
             content_cityname=CityArray[CityNumber].place;
@@ -208,11 +210,18 @@ $(document).ready(function(){
             $("#table1 td:eq(27)").html(CityArray[CityNumber].day3low);
             $("#table1 td:eq(28)").html(CityArray[CityNumber].day4low);
             $("#table1 td:eq(29)").html(CityArray[CityNumber].day5low);
-
+        }
+        else{
+            alert("No data available.");
+            CityNumber-=1;
+        }
     };
     
      //show right city's data
      function show_2(){
+         
+         if(CityArray[CityNumber].current!=null){
+         
             $("#container").show();
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
@@ -296,7 +305,11 @@ $(document).ready(function(){
             $("#table2 td:eq(27)").html(CityArray[CityNumber].day3low);
             $("#table2 td:eq(28)").html(CityArray[CityNumber].day4low);
             $("#table2 td:eq(29)").html(CityArray[CityNumber].day5low);
-
+         }
+         else{
+             alert("No data available.");
+             CityNumber-=1;
+         }
     };
 
     //if the choosen city is from US, the website will show its state and country. Otherwise, the website will only show its country.
