@@ -1,7 +1,6 @@
 /*
 
     #SOCR-27
-    Verify the entire thing is going to show before storing any information
     Resize
 
     #SOCR-25
@@ -144,7 +143,17 @@ $(document).ready(function(){
             content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
             content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
             content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
-            content_details += CityArray[CityNumber].description;
+        
+            if(CityArray[CityNumber].description != null){
+                content_details += CityArray[CityNumber].description;
+                
+                $("#table1 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
+                $("#table1 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
+                $("#table1 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
+                $("#table1 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
+                $("#table1 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
+                
+            }
 
             content_wind="";
             content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
@@ -173,15 +182,6 @@ $(document).ready(function(){
             $("#table1 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table1 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table1 td:eq(4)").html(CityArray[CityNumber].day5);
-        
-            //if(CityArray[CityNumber].day1icon)
-            //{
-                $("#table1 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
-            $("#table1 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
-            $("#table1 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
-            $("#table1 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
-            $("#table1 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
-            //}
             
         
             $("#table1 td:eq(10)").html(CityArray[CityNumber].date1);
@@ -224,7 +224,17 @@ $(document).ready(function(){
             content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
             content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
             content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
-            content_details += CityArray[CityNumber].description;
+         
+            if(CityArray[CityNumber].description != null){
+                content_details += CityArray[CityNumber].description;
+                
+                $("#table2 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
+                $("#table2 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
+                $("#table2 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
+                $("#table2 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
+                $("#table2 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
+                
+            }
 
             content_wind="";
             content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
@@ -255,12 +265,6 @@ $(document).ready(function(){
             $("#table2 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table2 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table2 td:eq(4)").html(CityArray[CityNumber].day5);
-    
-            $("#table2 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
-            $("#table2 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
-            $("#table2 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
-            $("#table2 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
-            $("#table2 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
         
             $("#table2 td:eq(10)").html(CityArray[CityNumber].date1);
             $("#table2 td:eq(11)").html(CityArray[CityNumber].date2);
