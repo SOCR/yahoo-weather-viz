@@ -3,9 +3,6 @@
     #SOCR-27
     Resize
 
-    #SOCR-25
-    Full documentation
-
     #SOCR-26
     d3 的图改宽一点
 
@@ -25,14 +22,6 @@ $(document).ready(function(){
     
     $("#question").hide();
     $(".progress_bar").hide();
-
-    // $('#zipcode').keyup(function(event) {
-    //     var keycode = (event.keyCode ? event.keyCode : event.which);
-    //     if(keycode == 13) {   
-    //         // Run function to display results
-    //         geteverything();
-    //     }
-    // });
 
     $("#zipcode").keypress(function(event){
         if(event.which == 13){
@@ -98,13 +87,14 @@ $(document).ready(function(){
               return false;
            }
            else{
+               // If zipcode is valid, call gerWoeidNumber to get to location id.
                CityArray[CityNumber].zipcode = zipcodeValue;
                getWoeidNumber(CityArray[CityNumber].zipcode);
                return true;
             }
         };
     
-
+    //Add the picture for sunrise/sunset and wind to city 1
     function showImage_1(){
         var windimg = document.createElement('div');
         windimg.id="windimg1";
@@ -117,6 +107,8 @@ $(document).ready(function(){
         $("#sunmoonimg1").append('<img src="http://aspgweather.com/cumulus/sunrise.png">')
     }
     
+    
+    //Add the picture for sunrise/sunset and wind to city 2
     function showImage_2(){
         var windimg = document.createElement('div');
         windimg.id="windimg2";
@@ -131,19 +123,24 @@ $(document).ready(function(){
     
     //show left city's data
     function show_1(){
+        
             $("#container").show();
+            
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
         
             content_geo=getGeo(CityArray[CityNumber].country);
 
+            //Description in the description box
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
             content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
             content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
             content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
-        
+            
+            
+            //Make sure that data are collected successfully
             if(CityArray[CityNumber].description != null){
                 content_details += CityArray[CityNumber].description;
                 
@@ -154,12 +151,15 @@ $(document).ready(function(){
                 $("#table1 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
                 
             }
-
+            
+            //wind data
             content_wind="";
             content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
             content_wind += "Wind Direction: "+'<font color="#1f77b4">'+CityArray[CityNumber].windDir+'</font>'+"<br>";
             content_wind += "Barometer: "+'<font color="#1f77b4">'+CityArray[CityNumber].barometer+'</font>'+"<br>";
-        
+            
+            
+            //sunrise/sunset data
             content_sunandmoon="";
             content_sunandmoon += "Sunrise: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunrise+'</font>'+"<br>";
             content_sunandmoon += "Sunset: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunset+'</font>'+"<br>";
@@ -176,7 +176,7 @@ $(document).ready(function(){
             $("#display_todayhl1").html(content_todayhl);
             $("#display_current1").html(content_current);
             
-        
+            //Display weather data in the table
             $("#table1 td:eq(0)").html(CityArray[CityNumber].day1);
             $("#table1 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table1 td:eq(2)").html(CityArray[CityNumber].day3);
@@ -218,13 +218,15 @@ $(document).ready(function(){
             content_country=CityArray[CityNumber].country;
          
             content_geo=getGeo(CityArray[CityNumber].country);
-
+            
+            //Description in the description box
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
             content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
             content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
             content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
-         
+            
+            //Make sure that data are collected successfully
             if(CityArray[CityNumber].description != null){
                 content_details += CityArray[CityNumber].description;
                 
@@ -235,12 +237,14 @@ $(document).ready(function(){
                 $("#table2 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
                 
             }
-
+            
+            //wind data
             content_wind="";
             content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
             content_wind += "Wind Direction: "+'<font color="#1f77b4">'+CityArray[CityNumber].windDir+'</font>'+"<br>";
             content_wind += "Barometer: "+'<font color="#1f77b4">'+CityArray[CityNumber].barometer+'</font>'+"<br>";
         
+            //sunset/sunrise data
             content_sunandmoon="";
             content_sunandmoon += "Sunrise: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunrise+'</font>'+"<br>";
             content_sunandmoon += "Sunset: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunset+'</font>'+"<br>";
@@ -259,7 +263,9 @@ $(document).ready(function(){
             $("#display_sunmoon2").html(content_sunandmoon);
             $("#display_todayhl2").html(content_todayhl);
             $("#display_current2").html(content_current);
-         
+            
+            
+            //Display weather data in the table
             $("#table2 td:eq(0)").html(CityArray[CityNumber].day1);
             $("#table2 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table2 td:eq(2)").html(CityArray[CityNumber].day3);
