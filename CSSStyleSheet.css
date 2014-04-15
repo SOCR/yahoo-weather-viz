@@ -6,7 +6,8 @@
 }
 */
 body { 
-  background: url('http://www.chaoswallpapers.com/wallpapers/pretty_cloudy_sunshine_weather-1680x1050.jpg') no-repeat center center fixed; 
+  background: no-repeat center center fixed; 
+    background-image:url("pretty_cloudy_sunshine_weather-1680x1050.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
