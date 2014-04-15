@@ -1,11 +1,7 @@
 /*
 
     #SOCR-27
-    Verify the entire thing is going to show before storing any information
     Resize
-
-    #SOCR-25
-    Full documentation
 
     #SOCR-26
     d3 的图改宽一点
@@ -26,14 +22,6 @@ $(document).ready(function(){
     
     $("#question").hide();
     $(".progress_bar").hide();
-
-    // $('#zipcode').keyup(function(event) {
-    //     var keycode = (event.keyCode ? event.keyCode : event.which);
-    //     if(keycode == 13) {   
-    //         // Run function to display results
-    //         geteverything();
-    //     }
-    // });
 
     $("#zipcode").keypress(function(event){
         if(event.which == 13){
@@ -96,16 +84,18 @@ $(document).ready(function(){
             
            if (isNaN(zipcodeValue) || zipcodeValue.toString().length != 5){
               alert("Please type in the valid zipcode!");
+               CityNumber-=1;
               return false;
            }
            else{
+               // If zipcode is valid, call gerWoeidNumber to get to location id.
                CityArray[CityNumber].zipcode = zipcodeValue;
                getWoeidNumber(CityArray[CityNumber].zipcode);
                return true;
             }
         };
     
-
+    //Add the picture for sunrise/sunset and wind to city 1
     function showImage_1(){
         var windimg = document.createElement('div');
         windimg.id="windimg1";
@@ -118,6 +108,8 @@ $(document).ready(function(){
         $("#sunmoonimg1").append('<img src="http://aspgweather.com/cumulus/sunrise.png">')
     }
     
+    
+    //Add the picture for sunrise/sunset and wind to city 2
     function showImage_2(){
         var windimg = document.createElement('div');
         windimg.id="windimg2";
@@ -132,25 +124,45 @@ $(document).ready(function(){
     
     //show left city's data
     function show_1(){
+        
+        if(CityArray[CityNumber].current!=null){
+        
             $("#container").show();
+            
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
         
             content_geo=getGeo(CityArray[CityNumber].country);
 
+            //Description in the description box
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
             content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
             content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
             content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
-            content_details += CityArray[CityNumber].description;
-
+            
+            
+            //Make sure that data are collected successfully
+            if(CityArray[CityNumber].description != null){
+                content_details += CityArray[CityNumber].description;
+                
+                $("#table1 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
+                $("#table1 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
+                $("#table1 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
+                $("#table1 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
+                $("#table1 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
+                
+            }
+            
+            //wind data
             content_wind="";
             content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
             content_wind += "Wind Direction: "+'<font color="#1f77b4">'+CityArray[CityNumber].windDir+'</font>'+"<br>";
             content_wind += "Barometer: "+'<font color="#1f77b4">'+CityArray[CityNumber].barometer+'</font>'+"<br>";
-        
+            
+            
+            //sunrise/sunset data
             content_sunandmoon="";
             content_sunandmoon += "Sunrise: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunrise+'</font>'+"<br>";
             content_sunandmoon += "Sunset: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunset+'</font>'+"<br>";
@@ -167,21 +179,12 @@ $(document).ready(function(){
             $("#display_todayhl1").html(content_todayhl);
             $("#display_current1").html(content_current);
             
-        
+            //Display weather data in the table
             $("#table1 td:eq(0)").html(CityArray[CityNumber].day1);
             $("#table1 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table1 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table1 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table1 td:eq(4)").html(CityArray[CityNumber].day5);
-        
-            //if(CityArray[CityNumber].day1icon)
-            //{
-                $("#table1 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
-            $("#table1 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
-            $("#table1 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
-            $("#table1 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
-            $("#table1 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
-            //}
             
         
             $("#table1 td:eq(10)").html(CityArray[CityNumber].date1);
@@ -207,30 +210,51 @@ $(document).ready(function(){
             $("#table1 td:eq(27)").html(CityArray[CityNumber].day3low);
             $("#table1 td:eq(28)").html(CityArray[CityNumber].day4low);
             $("#table1 td:eq(29)").html(CityArray[CityNumber].day5low);
-
+        }
+        else{
+            alert("No data available.");
+            CityNumber-=1;
+        }
     };
     
      //show right city's data
      function show_2(){
+         
+         if(CityArray[CityNumber].current!=null){
+         
             $("#container").show();
             content_cityname=CityArray[CityNumber].place;
             content_state=CityArray[CityNumber].state;
             content_country=CityArray[CityNumber].country;
          
             content_geo=getGeo(CityArray[CityNumber].country);
-
+            
+            //Description in the description box
             content_details="";
             content_details += "Feels like "+'<font color="#1f77b4">'+CityArray[CityNumber].current+"°F"+'</font>'+"<br>"+"<br>";
             content_details += "Wind chill: "+'<font color="#1f77b4">'+ CityArray[CityNumber].windchill+"F    " +'</font>';
             content_details += "Humidity: "+'<font color="#1f77b4">'+CityArray[CityNumber].humidity+"%    "+'</font>';
             content_details += "Visibility: "+'<font color="#1f77b4">'+CityArray[CityNumber].visibility+" miles"+'</font>'+"<br>"+"<br>";
-            content_details += CityArray[CityNumber].description;
-
+            
+            //Make sure that data are collected successfully
+            if(CityArray[CityNumber].description != null){
+                content_details += CityArray[CityNumber].description;
+                
+                $("#table2 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
+                $("#table2 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
+                $("#table2 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
+                $("#table2 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
+                $("#table2 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
+                
+            }
+            
+            //wind data
             content_wind="";
             content_wind += "Wind speed: "+'<font color="#1f77b4">'+CityArray[CityNumber].windSpeed+" mph"+'</font>'+"<br>";
             content_wind += "Wind Direction: "+'<font color="#1f77b4">'+CityArray[CityNumber].windDir+'</font>'+"<br>";
             content_wind += "Barometer: "+'<font color="#1f77b4">'+CityArray[CityNumber].barometer+'</font>'+"<br>";
         
+            //sunset/sunrise data
             content_sunandmoon="";
             content_sunandmoon += "Sunrise: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunrise+'</font>'+"<br>";
             content_sunandmoon += "Sunset: "+'<font color="#1f77b4">'+CityArray[CityNumber].sunset+'</font>'+"<br>";
@@ -249,18 +273,14 @@ $(document).ready(function(){
             $("#display_sunmoon2").html(content_sunandmoon);
             $("#display_todayhl2").html(content_todayhl);
             $("#display_current2").html(content_current);
-         
+            
+            
+            //Display weather data in the table
             $("#table2 td:eq(0)").html(CityArray[CityNumber].day1);
             $("#table2 td:eq(1)").html(CityArray[CityNumber].day2);
             $("#table2 td:eq(2)").html(CityArray[CityNumber].day3);
             $("#table2 td:eq(3)").html(CityArray[CityNumber].day4);
             $("#table2 td:eq(4)").html(CityArray[CityNumber].day5);
-    
-            $("#table2 td:eq(5)").html('<img src='+CityArray[CityNumber].day1icon+'>');
-            $("#table2 td:eq(6)").html('<img src='+CityArray[CityNumber].day2icon+'>');
-            $("#table2 td:eq(7)").html('<img src='+CityArray[CityNumber].day3icon+'>');
-            $("#table2 td:eq(8)").html('<img src='+CityArray[CityNumber].day4icon+'>');
-            $("#table2 td:eq(9)").html('<img src='+CityArray[CityNumber].day5icon+'>');
         
             $("#table2 td:eq(10)").html(CityArray[CityNumber].date1);
             $("#table2 td:eq(11)").html(CityArray[CityNumber].date2);
@@ -285,7 +305,11 @@ $(document).ready(function(){
             $("#table2 td:eq(27)").html(CityArray[CityNumber].day3low);
             $("#table2 td:eq(28)").html(CityArray[CityNumber].day4low);
             $("#table2 td:eq(29)").html(CityArray[CityNumber].day5low);
-
+         }
+         else{
+             alert("No data available.");
+             CityNumber-=1;
+         }
     };
 
     //if the choosen city is from US, the website will show its state and country. Otherwise, the website will only show its country.
@@ -798,7 +822,7 @@ $(document).ready(function(){
                         .attr("x", 3)
                         .attr("dy", ".35em")
                         .style("fill",colors[CityNumber])
-                        .text("• "+CityArray[CityNumber].place+" ("+CityArray[CityNumber].zipcode+")");
+                        .text("• "+CityArray[CityNumber].place);//+" ("+CityArray[CityNumber].zipcode+")");
         
                 graph.append("svg:path").attr("d", line(data))
                 .style("stroke",colors[CityNumber]);
